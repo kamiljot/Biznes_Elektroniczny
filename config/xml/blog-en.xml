@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?><rss version="2.0" xml:base="https://www.prestashop.com/en/blog/feed.xml" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:og="http://ogp.me/ns#" xmlns:article="http://ogp.me/ns/article#" xmlns:book="http://ogp.me/ns/book#" xmlns:profile="http://ogp.me/ns/profile#" xmlns:video="http://ogp.me/ns/video#" xmlns:product="http://ogp.me/ns/product#" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:sioc="http://rdfs.org/sioc/ns#" xmlns:sioct="http://rdfs.org/sioc/types#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <channel>
+    <title>Blog Feed</title>
+    <link>https://www.prestashop.com/en/blog/feed.xml</link>
+    <description></description>
+    <language>en</language>
+     <atom:link href="https://www.prestashop.com/en/blog/feed.xml" rel="self" type="application/rss+xml" />
+      <item>
+    <title>Why fast shipments are important for e-commerce customer satisfaction</title>
+    <link>https://www.prestashop.com/en/blog/fast-shipments-e-commerce</link>
+    <description>Today customers and consumers hold a huge buying power and all of the entrepreneurs’ actions for their own business are dedicated and revolve around the customer.</description>
+     <pubDate>Mon, 02 Nov 2020 12:16:49 +0100</pubDate>
+ <dc:creator>Francesca Biglio</dc:creator>
+ <guid isPermaLink="false">https://www.prestashop.com/en/blog/fast-shipments-e-commerce</guid>
+  </item>
+  <item>
+    <title>A list of PrestaShop modules to consider for a successful Black Friday and Holiday season</title>
+    <link>https://www.prestashop.com/en/blog/modules-black-friday-2020</link>
+    <description>In addition to holiday sales, the Black Friday phenomenon, about a month before Christmas, continues to grow each year.</description>
+     <pubDate>Sun, 25 Oct 2020 15:37:51 +0100</pubDate>
+ <dc:creator>PrestaShop Team</dc:creator>
+ <guid isPermaLink="false">https://www.prestashop.com/en/blog/modules-black-friday-2020</guid>
+  </item>
+  <item>
+    <title>Six tips to handle multiple-language and different currencies </title>
+    <link>https://www.prestashop.com/en/blog/multiple-language-currencies</link>
+    <description>Having a multi-lingual or multi-currency website is very useful for ecommerce businesses who are willing to expand their reach cross borders.</description>
+     <pubDate>Fri, 23 Oct 2020 17:59:57 +0200</pubDate>
+ <dc:creator>NitinSrivastavaen</dc:creator>
+ <guid isPermaLink="false">https://www.prestashop.com/en/blog/multiple-language-currencies</guid>
+  </item>
+  <item>
+    <title>Sales, Promotions, Clearance: How To Animate Your Sales All Year?</title>
+    <link>https://www.prestashop.com/en/blog/animate-sales-all-year</link>
+    <description>Throughout the year, ecommerce businesses utilize various sales techniques that help them turn their prospects into regular customers &amp;amp; also in retaining the existing customers.</description>
+     <pubDate>Wed, 14 Oct 2020 16:44:51 +0200</pubDate>
+ <dc:creator>NitinSrivastavaen</dc:creator>
+ <guid isPermaLink="false">https://www.prestashop.com/en/blog/animate-sales-all-year</guid>
+  </item>
+  <item>
+    <title>PrestaShop Metrics, the new analytics tool built to centralize all ecommerce data</title>
+    <link>https://www.prestashop.com/en/blog/prestashop-metrics</link>
+    <description>In ecommerce, perhaps even more than any other sector, data and the information it provides are essential for managing businesses.</description>
+     <pubDate>Thu, 08 Oct 2020 12:12:06 +0200</pubDate>
+ <dc:creator>Pierre-Olivier Calande</dc:creator>
+ <guid isPermaLink="false">https://www.prestashop.com/en/blog/prestashop-metrics</guid>
+  </item>
+  <item>
+    <title>Email Marketing 2020: All you need to know</title>
+    <link>https://www.prestashop.com/en/blog/email-marketing-2020</link>
+    <description>Email marketing is the most profitable direct marketing tool, capable of generating up to 30 times your initial investment. This makes it a vital pillar of any digital marketing strategy.</description>
+     <pubDate>Tue, 06 Oct 2020 18:25:23 +0200</pubDate>
+ <dc:creator>Vytaure Banyte</dc:creator>
+ <guid isPermaLink="false">https://www.prestashop.com/en/blog/email-marketing-2020</guid>
+  </item>
+  <item>
+    <title>How to improve customer experience: Top 10 trends and techniques</title>
+    <link>https://www.prestashop.com/en/blog/customer-experience-trends</link>
+    <description>The COVID-19 pandemic has upended the retail industry, forcing the closure of physical stores and causing uncertainty for the future of the in-store experience.</description>
+     <pubDate>Wed, 30 Sep 2020 17:42:59 +0200</pubDate>
+ <dc:creator>Neha Sharma</dc:creator>
+ <guid isPermaLink="false">https://www.prestashop.com/en/blog/customer-experience-trends</guid>
+  </item>
+  <item>
+    <title>The importance of translation in the internationalization of your ecommerce</title>
+    <link>https://www.prestashop.com/en/blog/translation-internationalization-ecommerce</link>
+    <description>International expansion is an especially important factor for the growth of sales from your online store.</description>
+     <pubDate>Mon, 28 Sep 2020 16:33:53 +0200</pubDate>
+ <dc:creator>Sara Lázaro EN</dc:creator>
+ <guid isPermaLink="false">https://www.prestashop.com/en/blog/translation-internationalization-ecommerce</guid>
+  </item>
+  <item>
+    <title>PSD2: EU mandatory strong authentication by the end of 2020: be ready!</title>
+    <link>https://www.prestashop.com/en/blog/psd2-strong-authentication</link>
+    <description> </description>
+     <pubDate>Fri, 25 Sep 2020 16:25:49 +0200</pubDate>
+ <dc:creator>PrestaShop Team</dc:creator>
+ <guid isPermaLink="false">https://www.prestashop.com/en/blog/psd2-strong-authentication</guid>
+  </item>
+  <item>
+    <title>Marketplaces: what are the main difficulties encountered by retailers, and what are the solutions?</title>
+    <link>https://www.prestashop.com/en/blog/marketfire-marketplaces-retailers</link>
+    <description>During the release of the Marketfire e-commerce solution module on the PrestaShop Addons Ma</description>
+     <pubDate>Tue, 15 Sep 2020 17:49:48 +0200</pubDate>
+ <dc:creator>PrestaShop Team</dc:creator>
+ <guid isPermaLink="false">https://www.prestashop.com/en/blog/marketfire-marketplaces-retailers</guid>
+  </item>
+  </channel>
+</rss>
