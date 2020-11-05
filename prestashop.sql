@@ -1148,7 +1148,12 @@ CREATE TABLE `ps_admin_filter` (
 
 INSERT INTO `ps_admin_filter` (`id`, `employee`, `shop`, `controller`, `action`, `filter`, `filter_id`) VALUES
 (1, 1, 1, 'ProductController', 'catalogAction', '{\"filter_category\":\"\",\"filter_column_id_product\":\"\",\"filter_column_name\":\"\",\"filter_column_reference\":\"\",\"filter_column_name_category\":\"\",\"filter_column_price\":\"\",\"filter_column_sav_quantity\":\"\",\"filter_column_active\":\"\",\"last_offset\":\"0\",\"last_limit\":\"20\",\"last_orderBy\":\"id_product\",\"last_sortOrder\":\"desc\"}', ''),
-(2, 1, 1, '', '', '{\"orderBy\":\"position\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_category_parent\":2}}', 'category');
+(2, 1, 1, '', '', '{\"orderBy\":\"position\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_category_parent\":\"2\"}}', 'category'),
+(3, 1, 1, '', '', '{\"orderBy\":\"position\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_cms_category_parent\":1}}', 'cms_page_category'),
+(4, 1, 1, '', '', '{\"orderBy\":\"position\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_cms_category_parent\":1}}', 'cms_page'),
+(5, 1, 1, '', '', '{\"limit\":10,\"orderBy\":\"name\",\"sortOrder\":\"asc\",\"filters\":[]}', 'manufacturer'),
+(6, 1, 1, '', '', '{\"limit\":10,\"orderBy\":\"id_address\",\"sortOrder\":\"desc\",\"filters\":[]}', 'manufacturer_address'),
+(7, 1, 1, 'meta', 'index', '{\"limit\":50,\"orderBy\":\"id_meta\",\"sortOrder\":\"asc\",\"filters\":[]}', '');
 
 -- --------------------------------------------------------
 
@@ -1296,31 +1301,10 @@ CREATE TABLE `ps_attribute` (
 --
 
 INSERT INTO `ps_attribute` (`id_attribute`, `id_attribute_group`, `color`, `position`) VALUES
-(1, 1, '', 0),
-(2, 1, '', 1),
-(3, 1, '', 2),
-(4, 1, '', 3),
-(5, 2, '#AAB2BD', 0),
-(6, 2, '#CFC4A6', 1),
-(7, 2, '#f5f5dc', 2),
-(8, 2, '#ffffff', 3),
-(9, 2, '#faebd7', 4),
-(10, 2, '#E84C3D', 5),
-(11, 2, '#434A54', 6),
-(12, 2, '#C19A6B', 7),
-(13, 2, '#F39C11', 8),
-(14, 2, '#5D9CEC', 9),
-(15, 2, '#A0D468', 10),
-(16, 2, '#F1C40F', 11),
-(17, 2, '#964B00', 12),
-(18, 2, '#FCCACD', 13),
-(19, 3, '', 0),
-(20, 3, '', 1),
-(21, 3, '', 2),
-(22, 4, '', 0),
-(23, 4, '', 1),
-(24, 4, '', 2),
-(25, 4, '', 3);
+(26, 5, '', 0),
+(27, 5, '', 1),
+(28, 6, '', 0),
+(29, 6, '', 1);
 
 -- --------------------------------------------------------
 
@@ -1340,10 +1324,8 @@ CREATE TABLE `ps_attribute_group` (
 --
 
 INSERT INTO `ps_attribute_group` (`id_attribute_group`, `is_color_group`, `group_type`, `position`) VALUES
-(1, 0, 'select', 0),
-(2, 1, 'color', 1),
-(3, 0, 'select', 2),
-(4, 0, 'select', 3);
+(5, 0, 'select', 0),
+(6, 0, 'select', 1);
 
 -- --------------------------------------------------------
 
@@ -1363,14 +1345,10 @@ CREATE TABLE `ps_attribute_group_lang` (
 --
 
 INSERT INTO `ps_attribute_group_lang` (`id_attribute_group`, `id_lang`, `name`, `public_name`) VALUES
-(1, 1, 'Size', 'Size'),
-(1, 2, 'Rozmiar', 'Rozmiar'),
-(2, 1, 'Color', 'Color'),
-(2, 2, 'Kolor', 'Kolor'),
-(3, 1, 'Dimension', 'Dimension'),
-(3, 2, 'Dimension', 'Dimension'),
-(4, 1, 'Paper Type', 'Paper Type'),
-(4, 2, 'Paper Type', 'Paper Type');
+(5, 1, 'Accommodation', 'Accommodation'),
+(5, 2, 'Zakwaterowanie', 'Zakwaterowanie'),
+(6, 1, 'Flight', 'Flight'),
+(6, 2, 'Lot', 'Lot');
 
 -- --------------------------------------------------------
 
@@ -1388,10 +1366,8 @@ CREATE TABLE `ps_attribute_group_shop` (
 --
 
 INSERT INTO `ps_attribute_group_shop` (`id_attribute_group`, `id_shop`) VALUES
-(1, 1),
-(2, 1),
-(3, 1),
-(4, 1);
+(5, 1),
+(6, 1);
 
 -- --------------------------------------------------------
 
@@ -1424,56 +1400,14 @@ CREATE TABLE `ps_attribute_lang` (
 --
 
 INSERT INTO `ps_attribute_lang` (`id_attribute`, `id_lang`, `name`) VALUES
-(1, 1, 'S'),
-(1, 2, 'S'),
-(2, 1, 'M'),
-(2, 2, 'M'),
-(3, 1, 'L'),
-(3, 2, 'L'),
-(4, 1, 'XL'),
-(4, 2, 'XL'),
-(5, 1, 'Grey'),
-(5, 2, 'Szary'),
-(6, 1, 'Taupe'),
-(6, 2, 'Szarobrązowy'),
-(7, 1, 'Beige'),
-(7, 2, 'Beżowy'),
-(8, 1, 'White'),
-(8, 2, 'Biały'),
-(9, 1, 'Off White'),
-(9, 2, 'Złamana biel'),
-(10, 1, 'Red'),
-(10, 2, 'Czerwony'),
-(11, 1, 'Black'),
-(11, 2, 'czarny'),
-(12, 1, 'Camel'),
-(12, 2, 'Wielbłąd'),
-(13, 1, 'Orange'),
-(13, 2, 'Pomarańczowy'),
-(14, 1, 'Blue'),
-(14, 2, 'Niebieski'),
-(15, 1, 'Green'),
-(15, 2, 'Zielony'),
-(16, 1, 'Yellow'),
-(16, 2, 'Żółty'),
-(17, 1, 'Brown'),
-(17, 2, 'Brązowy'),
-(18, 1, 'Pink'),
-(18, 2, 'Różowy'),
-(19, 1, '40x60cm'),
-(19, 2, '40x60cm'),
-(20, 1, '60x90cm'),
-(20, 2, '60x90cm'),
-(21, 1, '80x120cm'),
-(21, 2, '80x120cm'),
-(22, 1, 'Ruled'),
-(22, 2, 'Ruled'),
-(23, 1, 'Plain'),
-(23, 2, 'Plain'),
-(24, 1, 'Squarred'),
-(24, 2, 'Squarred'),
-(25, 1, 'Doted'),
-(25, 2, 'Doted');
+(26, 1, 'Standard suite'),
+(26, 2, 'Apartament zwykły'),
+(27, 1, 'Premium suite'),
+(27, 2, 'Apartament premium'),
+(28, 1, 'Standard class'),
+(28, 2, 'Standard'),
+(29, 1, 'Premium'),
+(29, 2, 'Premium');
 
 -- --------------------------------------------------------
 
@@ -1491,31 +1425,10 @@ CREATE TABLE `ps_attribute_shop` (
 --
 
 INSERT INTO `ps_attribute_shop` (`id_attribute`, `id_shop`) VALUES
-(1, 1),
-(2, 1),
-(3, 1),
-(4, 1),
-(5, 1),
-(6, 1),
-(7, 1),
-(8, 1),
-(9, 1),
-(10, 1),
-(11, 1),
-(12, 1),
-(13, 1),
-(14, 1),
-(15, 1),
-(16, 1),
-(17, 1),
-(18, 1),
-(19, 1),
-(20, 1),
-(21, 1),
-(22, 1),
-(23, 1),
-(24, 1),
-(25, 1);
+(26, 1),
+(27, 1),
+(28, 1),
+(29, 1);
 
 -- --------------------------------------------------------
 
@@ -2508,13 +2421,13 @@ INSERT INTO `ps_badge` (`id_badge`, `id_ps_badge`, `type`, `id_group`, `group_po
 (166, 42, 'achievement', 12, 4, 20, 0, 0),
 (167, 43, 'achievement', 12, 5, 25, 0, 0),
 (168, 44, 'achievement', 12, 6, 30, 0, 0),
-(169, 45, 'achievement', 13, 1, 5, 0, 0),
+(169, 45, 'achievement', 13, 1, 5, 0, 1),
 (170, 46, 'achievement', 13, 2, 10, 0, 0),
 (171, 47, 'achievement', 13, 3, 15, 0, 0),
 (172, 48, 'achievement', 13, 4, 20, 0, 0),
 (173, 49, 'achievement', 13, 5, 25, 0, 0),
 (174, 50, 'achievement', 13, 6, 30, 0, 0),
-(175, 51, 'achievement', 14, 1, 5, 0, 0),
+(175, 51, 'achievement', 14, 1, 5, 0, 1),
 (176, 52, 'achievement', 14, 2, 10, 0, 0),
 (177, 53, 'achievement', 14, 3, 15, 0, 0),
 (178, 54, 'achievement', 14, 4, 20, 0, 0),
@@ -2545,7 +2458,7 @@ INSERT INTO `ps_badge` (`id_badge`, `id_ps_badge`, `type`, `id_group`, `group_po
 (203, 91, 'feature', 35, 4, 10, 0, 0),
 (204, 92, 'feature', 35, 5, 10, 0, 0),
 (205, 93, 'feature', 35, 6, 10, 0, 0),
-(206, 94, 'feature', 36, 1, 5, 0, 0),
+(206, 94, 'feature', 36, 1, 5, 0, 1),
 (207, 95, 'feature', 36, 2, 5, 0, 0),
 (208, 96, 'feature', 36, 3, 10, 0, 0),
 (209, 97, 'feature', 36, 4, 10, 0, 0),
@@ -3443,17 +3356,10 @@ CREATE TABLE `ps_category` (
 --
 
 INSERT INTO `ps_category` (`id_category`, `id_parent`, `id_shop_default`, `level_depth`, `nleft`, `nright`, `active`, `date_add`, `date_upd`, `position`, `is_root_category`) VALUES
-(1, 0, 1, 0, 1, 22, 1, '2020-11-02 19:32:42', '2020-11-02 19:32:42', 0, 0),
-(2, 1, 1, 1, 2, 21, 1, '2020-11-02 19:32:42', '2020-11-02 19:32:42', 0, 1),
-(3, 2, 1, 2, 3, 8, 0, '2020-11-02 19:35:27', '2020-11-04 18:27:10', 0, 0),
-(4, 3, 1, 3, 4, 5, 1, '2020-11-02 19:35:27', '2020-11-02 19:35:27', 0, 0),
-(5, 3, 1, 3, 6, 7, 1, '2020-11-02 19:35:27', '2020-11-02 19:35:27', 0, 0),
-(6, 2, 1, 2, 9, 14, 0, '2020-11-02 19:35:27', '2020-11-02 20:05:58', 1, 0),
-(7, 6, 1, 3, 10, 11, 1, '2020-11-02 19:35:27', '2020-11-02 19:35:27', 0, 0),
-(8, 6, 1, 3, 12, 13, 1, '2020-11-02 19:35:27', '2020-11-02 19:35:27', 0, 0),
-(9, 2, 1, 2, 15, 16, 0, '2020-11-02 19:35:27', '2020-11-02 20:05:58', 2, 0),
-(10, 2, 1, 2, 17, 18, 1, '2020-11-04 18:31:43', '2020-11-04 18:31:43', 0, 0),
-(11, 2, 1, 2, 19, 20, 1, '2020-11-04 18:35:16', '2020-11-04 18:35:16', 0, 0);
+(1, 0, 1, 0, 1, 8, 1, '2020-11-02 19:32:42', '2020-11-02 19:32:42', 0, 0),
+(2, 1, 1, 1, 2, 7, 1, '2020-11-02 19:32:42', '2020-11-02 19:32:42', 0, 1),
+(10, 2, 1, 2, 3, 4, 1, '2020-11-04 18:31:43', '2020-11-05 21:37:04', 0, 0),
+(11, 2, 1, 2, 5, 6, 1, '2020-11-04 18:35:16', '2020-11-04 23:20:52', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -3475,27 +3381,6 @@ INSERT INTO `ps_category_group` (`id_category`, `id_group`) VALUES
 (2, 1),
 (2, 2),
 (2, 3),
-(3, 1),
-(3, 2),
-(3, 3),
-(4, 1),
-(4, 2),
-(4, 3),
-(5, 1),
-(5, 2),
-(5, 3),
-(6, 1),
-(6, 2),
-(6, 3),
-(7, 1),
-(7, 2),
-(7, 3),
-(8, 1),
-(8, 2),
-(8, 3),
-(9, 1),
-(9, 2),
-(9, 3),
 (10, 1),
 (10, 2),
 (10, 3),
@@ -3530,21 +3415,7 @@ INSERT INTO `ps_category_lang` (`id_category`, `id_shop`, `id_lang`, `name`, `de
 (1, 1, 2, 'Baza', '', 'baza', '', '', ''),
 (2, 1, 1, 'Home', '', 'home', '', '', ''),
 (2, 1, 2, 'Strona główna', '', 'strona-glowna', '', '', ''),
-(3, 1, 1, 'Clothes', '<p><span style=\"font-size:10pt;font-style:normal;\">Discover our favorites fashionable discoveries, a selection of cool items to integrate in your wardrobe. Compose a unique style with personality which matches your own.</span></p>', 'clothes', '', '', ''),
-(3, 1, 2, 'Clothes', '<p><span style=\"font-size:10pt;font-style:normal;\">Discover our favorites fashionable discoveries, a selection of cool items to integrate in your wardrobe. Compose a unique style with personality which matches your own.</span></p>', 'clothes', '', '', ''),
-(4, 1, 1, 'Men', '<p><span style=\"font-size:10pt;font-style:normal;\">T-shirts, sweaters, hoodies and men\'s accessories. From basics to original creations, for every style. </span></p>', 'men', '', '', ''),
-(4, 1, 2, 'Men', '<p><span style=\"font-size:10pt;font-style:normal;\">T-shirts, sweaters, hoodies and men\'s accessories. From basics to original creations, for every style. </span></p>', 'men', '', '', ''),
-(5, 1, 1, 'Women', '<p><span style=\"font-size:10pt;font-style:normal;\">T-shirts, sweaters, hoodies and women\'s accessories. From basics to original creations, for every style. </span></p>', 'women', '', '', ''),
-(5, 1, 2, 'Women', '<p><span style=\"font-size:10pt;font-style:normal;\">T-shirts, sweaters, hoodies and women\'s accessories. From basics to original creations, for every style. </span></p>', 'women', '', '', ''),
-(6, 1, 1, 'Accessories', '<p><span style=\"font-size:10pt;font-style:normal;\">Items and accessories for your desk, kitchen or living room. Make your house a home with our eye-catching designs. </span></p>', 'accessories', '', '', ''),
-(6, 1, 2, 'Produkty powiązane', '<p><span style=\"font-size:10pt;font-style:normal;\">Items and accessories for your desk, kitchen or living room. Make your house a home with our eye-catching designs. </span></p>', 'accessories', '', '', ''),
-(7, 1, 1, 'Stationery', '<p><span style=\"font-size:10pt;font-style:normal;\">Notebooks, agendas, office accessories and more. Everything you need to combine the pleasant and the useful, either at work or at home. </span></p>', 'stationery', '', '', ''),
-(7, 1, 2, 'Stationery', '<p><span style=\"font-size:10pt;font-style:normal;\">Notebooks, agendas, office accessories and more. Everything you need to combine the pleasant and the useful, either at work or at home. </span></p>', 'stationery', '', '', ''),
-(8, 1, 1, 'Home Accessories', '<p><span style=\"font-size:10pt;font-style:normal;\">Details matter! Liven up your interior with our selection of home accessories. </span></p>', 'home-accessories', '', '', ''),
-(8, 1, 2, 'Home Accessories', '<p><span style=\"font-size:10pt;font-style:normal;\">Details matter! Liven up your interior with our selection of home accessories. </span></p>', 'home-accessories', '', '', ''),
-(9, 1, 1, 'Art', '<p><span style=\"font-size:10pt;font-style:normal;\">Framed poster and vector images, all you need to give personality to your walls or bring your creative projects to life.</span></p>', 'art', '', '', ''),
-(9, 1, 2, 'Art', '<p><span style=\"font-size:10pt;font-style:normal;\">Framed poster and vector images, all you need to give personality to your walls or bring your creative projects to life.</span></p>', 'art', '', '', ''),
-(10, 1, 1, 'Wycieczki zagraniczne', '', 'wycieczki-zagraniczne', '', '', ''),
+(10, 1, 1, 'International travel', '', 'international-travel', '', '', ''),
 (10, 1, 2, 'Wycieczki zagraniczne', '', 'wycieczki-zagraniczne', '', '', ''),
 (11, 1, 1, 'Wycieczki krajowe', '', 'wycieczki-krajowe', '', '', ''),
 (11, 1, 2, 'Wycieczki krajowe', '', 'wycieczki-krajowe', '', '', '');
@@ -3566,7 +3437,9 @@ CREATE TABLE `ps_category_product` (
 --
 
 INSERT INTO `ps_category_product` (`id_category`, `id_product`, `position`) VALUES
-(2, 20, 1);
+(2, 21, 1),
+(10, 22, 1),
+(10, 23, 2);
 
 -- --------------------------------------------------------
 
@@ -3587,15 +3460,8 @@ CREATE TABLE `ps_category_shop` (
 INSERT INTO `ps_category_shop` (`id_category`, `id_shop`, `position`) VALUES
 (1, 1, 0),
 (2, 1, 0),
-(3, 1, 0),
-(4, 1, 0),
-(5, 1, 1),
-(6, 1, 1),
-(7, 1, 0),
-(8, 1, 1),
-(9, 1, 2),
-(10, 1, 3),
-(11, 1, 4);
+(10, 1, 0),
+(11, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -4496,11 +4362,11 @@ INSERT INTO `ps_configuration` (`id_configuration`, `id_shop_group`, `id_shop`, 
 (136, NULL, NULL, 'PS_SHOW_NEW_MESSAGES', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (137, NULL, NULL, 'PS_FEATURE_FEATURE_ACTIVE', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (138, NULL, NULL, 'PS_COMBINATION_FEATURE_ACTIVE', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(139, NULL, NULL, 'PS_SPECIFIC_PRICE_FEATURE_ACTIVE', NULL, '0000-00-00 00:00:00', '2020-11-02 20:04:54'),
+(139, NULL, NULL, 'PS_SPECIFIC_PRICE_FEATURE_ACTIVE', NULL, '0000-00-00 00:00:00', '2020-11-05 20:36:57'),
 (140, NULL, NULL, 'PS_VIRTUAL_PROD_FEATURE_ACTIVE', '1', '0000-00-00 00:00:00', '2020-11-02 19:35:28'),
 (141, NULL, NULL, 'PS_CUSTOMIZATION_FEATURE_ACTIVE', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (142, NULL, NULL, 'PS_CART_RULE_FEATURE_ACTIVE', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(143, NULL, NULL, 'PS_PACK_FEATURE_ACTIVE', '1', '0000-00-00 00:00:00', '2020-11-02 19:35:30'),
+(143, NULL, NULL, 'PS_PACK_FEATURE_ACTIVE', NULL, '0000-00-00 00:00:00', '2020-11-05 22:46:42'),
 (144, NULL, NULL, 'PS_ALIAS_FEATURE_ACTIVE', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (145, NULL, NULL, 'PS_TAX_ADDRESS_TYPE', 'id_address_delivery', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (146, NULL, NULL, 'PS_SHOP_DEFAULT', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -4606,7 +4472,7 @@ INSERT INTO `ps_configuration` (`id_configuration`, `id_shop_group`, `id_shop`, 
 (246, NULL, NULL, 'PS_MAIL_COLOR', '#db3484', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (247, NULL, NULL, 'NW_SALT', 'Oq0MAMWxyb726qAD', '0000-00-00 00:00:00', '2020-11-02 19:32:53'),
 (248, NULL, NULL, 'PS_PAYMENT_LOGO_CMS_ID', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(249, NULL, NULL, 'HOME_FEATURED_NBR', '8', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(249, NULL, NULL, 'HOME_FEATURED_NBR', '8', '0000-00-00 00:00:00', '2020-11-05 22:11:21'),
 (250, NULL, NULL, 'SEK_MIN_OCCURENCES', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (251, NULL, NULL, 'SEK_FILTER_KW', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (252, NULL, NULL, 'PS_ALLOW_MOBILE_DEVICE', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -4672,7 +4538,7 @@ INSERT INTO `ps_configuration` (`id_configuration`, `id_shop_group`, `id_shop`, 
 (320, NULL, NULL, 'CHECKBOX_MESSAGE', '1', '2020-11-02 19:32:54', '2020-11-02 19:32:54'),
 (321, NULL, NULL, 'BACKGROUND_COLOR_FAVICONBO', '#DF0067', '2020-11-02 19:32:54', '2020-11-02 19:32:54'),
 (322, NULL, NULL, 'TEXT_COLOR_FAVICONBO', '#FFFFFF', '2020-11-02 19:32:54', '2020-11-02 19:32:54'),
-(323, NULL, NULL, 'HOME_FEATURED_CAT', '2', '2020-11-02 19:32:54', '2020-11-02 19:32:54'),
+(323, NULL, NULL, 'HOME_FEATURED_CAT', '10', '2020-11-02 19:32:54', '2020-11-05 22:11:49'),
 (324, NULL, NULL, 'HOMESLIDER_PAUSE_ON_HOVER', '1', '2020-11-02 19:32:54', '2020-11-02 19:32:54'),
 (325, NULL, NULL, 'HOMESLIDER_WRAP', '1', '2020-11-02 19:32:54', '2020-11-02 19:32:54'),
 (326, NULL, NULL, 'PS_SC_TWITTER', '1', '2020-11-02 19:32:55', '2020-11-02 19:32:55'),
@@ -4690,8 +4556,8 @@ INSERT INTO `ps_configuration` (`id_configuration`, `id_shop_group`, `id_shop`, 
 (338, NULL, NULL, 'CONF_PS_WIREPAYMENT_VAR_FOREIGN', '2', '2020-11-02 19:32:56', '2020-11-02 19:32:56'),
 (339, NULL, NULL, 'GF_INSTALL_CALC', '1', '2020-11-02 19:33:55', '2020-11-02 19:39:52'),
 (340, NULL, NULL, 'GF_CURRENT_LEVEL', '1', '2020-11-02 19:33:55', '2020-11-02 19:33:55'),
-(341, NULL, NULL, 'GF_CURRENT_LEVEL_PERCENT', '40', '2020-11-02 19:33:55', '2020-11-04 18:35:45'),
-(342, NULL, NULL, 'GF_NOTIFICATION', '5', '2020-11-02 19:33:55', '2020-11-04 18:35:45'),
+(341, NULL, NULL, 'GF_CURRENT_LEVEL_PERCENT', '55', '2020-11-02 19:33:55', '2020-11-05 22:18:57'),
+(342, NULL, NULL, 'GF_NOTIFICATION', '8', '2020-11-02 19:33:55', '2020-11-05 22:18:57'),
 (343, NULL, NULL, 'EMARKETING_SHOPTOKEN', NULL, '2020-11-02 19:33:55', '2020-11-02 19:33:55'),
 (344, NULL, NULL, 'EMARKETING_AUTHORIZE_JWT', NULL, '2020-11-02 19:33:55', '2020-11-02 19:33:55'),
 (345, NULL, NULL, 'EMARKETING_GLOBAL_SITE_TRACKER', NULL, '2020-11-02 19:33:55', '2020-11-02 19:33:55'),
@@ -4717,8 +4583,9 @@ INSERT INTO `ps_configuration` (`id_configuration`, `id_shop_group`, `id_shop`, 
 (365, NULL, NULL, 'PS_LAYERED_FILTER_SHOW_OUT_OF_STOCK_LAST', '0', '2020-11-02 19:35:32', '2020-11-02 19:35:32'),
 (366, NULL, NULL, 'PS_LAYERED_FILTER_BY_DEFAULT_CATEGORY', '0', '2020-11-02 19:35:32', '2020-11-02 19:35:32'),
 (367, NULL, NULL, 'PS_LAYERED_INDEXED', '1', '2020-11-02 19:35:33', '2020-11-02 19:35:33'),
-(368, NULL, NULL, 'GF_NOT_VIEWED_BADGE', '132', '2020-11-02 19:39:52', '2020-11-04 18:35:45'),
-(369, NULL, NULL, 'ONBOARDINGV2_SHUT_DOWN', '1', '2020-11-02 19:40:05', '2020-11-02 19:40:05');
+(368, NULL, NULL, 'GF_NOT_VIEWED_BADGE', '206', '2020-11-02 19:39:52', '2020-11-05 22:18:57'),
+(369, NULL, NULL, 'ONBOARDINGV2_SHUT_DOWN', '1', '2020-11-02 19:40:05', '2020-11-02 19:40:05'),
+(370, NULL, NULL, 'PS_SHOWCASECARD_CATEGORIES_CLOSED', '1', '2020-11-05 21:44:44', '2020-11-05 21:44:44');
 
 -- --------------------------------------------------------
 
@@ -6418,14 +6285,6 @@ CREATE TABLE `ps_feature` (
   `position` int(10) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `ps_feature`
---
-
-INSERT INTO `ps_feature` (`id_feature`, `position`) VALUES
-(1, 0),
-(2, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -6437,16 +6296,6 @@ CREATE TABLE `ps_feature_lang` (
   `id_lang` int(10) UNSIGNED NOT NULL,
   `name` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `ps_feature_lang`
---
-
-INSERT INTO `ps_feature_lang` (`id_feature`, `id_lang`, `name`) VALUES
-(1, 1, 'Composition'),
-(2, 1, 'Property'),
-(1, 2, 'Composition'),
-(2, 2, 'Property');
 
 -- --------------------------------------------------------
 
@@ -6471,14 +6320,6 @@ CREATE TABLE `ps_feature_shop` (
   `id_shop` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `ps_feature_shop`
---
-
-INSERT INTO `ps_feature_shop` (`id_feature`, `id_shop`) VALUES
-(1, 1),
-(2, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -6491,22 +6332,6 @@ CREATE TABLE `ps_feature_value` (
   `custom` tinyint(3) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `ps_feature_value`
---
-
-INSERT INTO `ps_feature_value` (`id_feature_value`, `id_feature`, `custom`) VALUES
-(1, 1, 0),
-(2, 1, 0),
-(3, 1, 0),
-(4, 1, 0),
-(5, 1, 0),
-(6, 1, 0),
-(7, 2, 0),
-(8, 2, 0),
-(9, 2, 0),
-(10, 2, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -6518,32 +6343,6 @@ CREATE TABLE `ps_feature_value_lang` (
   `id_lang` int(10) UNSIGNED NOT NULL,
   `value` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `ps_feature_value_lang`
---
-
-INSERT INTO `ps_feature_value_lang` (`id_feature_value`, `id_lang`, `value`) VALUES
-(1, 1, 'Polyester'),
-(1, 2, 'Poliester'),
-(2, 1, 'Wool'),
-(2, 2, 'Wełna'),
-(3, 1, 'Ceramic'),
-(3, 2, 'Ceramic'),
-(4, 1, 'Cotton'),
-(4, 2, 'Bawełna'),
-(5, 1, 'Recycled cardboard'),
-(5, 2, 'Recycled cardboard'),
-(6, 1, 'Matt paper'),
-(6, 2, 'Matt paper'),
-(7, 1, 'Long sleeves'),
-(7, 2, 'Long sleeves'),
-(8, 1, 'Short sleeves'),
-(8, 2, 'Short sleeves'),
-(9, 1, 'Removable cover'),
-(9, 2, 'Removable cover'),
-(10, 1, '120 pages'),
-(10, 2, '120 pages');
 
 -- --------------------------------------------------------
 
@@ -7470,7 +7269,6 @@ INSERT INTO `ps_hook_module` (`id_module`, `id_shop`, `id_hook`, `position`) VAL
 (55, 1, 462, 1),
 (55, 1, 463, 1),
 (55, 1, 464, 1),
-(57, 1, 395, 1),
 (58, 1, 43, 1),
 (58, 1, 447, 1),
 (59, 1, 132, 1),
@@ -7499,6 +7297,7 @@ INSERT INTO `ps_hook_module` (`id_module`, `id_shop`, `id_hook`, `position`) VAL
 (62, 1, 423, 1),
 (62, 1, 424, 1),
 (62, 1, 425, 1),
+(63, 1, 395, 1),
 (2, 1, 395, 2),
 (3, 1, 396, 2),
 (3, 1, 402, 2),
@@ -7598,6 +7397,14 @@ CREATE TABLE `ps_image` (
   `cover` tinyint(1) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `ps_image`
+--
+
+INSERT INTO `ps_image` (`id_image`, `id_product`, `position`, `cover`) VALUES
+(26, 23, 1, 1),
+(27, 22, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -7609,6 +7416,16 @@ CREATE TABLE `ps_image_lang` (
   `id_lang` int(10) UNSIGNED NOT NULL,
   `legend` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ps_image_lang`
+--
+
+INSERT INTO `ps_image_lang` (`id_image`, `id_lang`, `legend`) VALUES
+(26, 1, ''),
+(26, 2, ''),
+(27, 1, ''),
+(27, 2, '');
 
 -- --------------------------------------------------------
 
@@ -7622,6 +7439,14 @@ CREATE TABLE `ps_image_shop` (
   `id_shop` int(11) UNSIGNED NOT NULL,
   `cover` tinyint(1) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ps_image_shop`
+--
+
+INSERT INTO `ps_image_shop` (`id_product`, `id_image`, `id_shop`, `cover`) VALUES
+(22, 27, 1, 1),
+(23, 26, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -7920,7 +7745,9 @@ INSERT INTO `ps_layered_indexable_attribute_group` (`id_attribute_group`, `index
 (1, 1),
 (2, 1),
 (3, 1),
-(4, 1);
+(4, 1),
+(5, 1),
+(6, 1);
 
 -- --------------------------------------------------------
 
@@ -7959,14 +7786,6 @@ CREATE TABLE `ps_layered_indexable_feature` (
   `indexable` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `ps_layered_indexable_feature`
---
-
-INSERT INTO `ps_layered_indexable_feature` (`id_feature`, `indexable`) VALUES
-(1, 1),
-(2, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -7979,6 +7798,14 @@ CREATE TABLE `ps_layered_indexable_feature_lang_value` (
   `url_name` varchar(128) NOT NULL,
   `meta_title` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ps_layered_indexable_feature_lang_value`
+--
+
+INSERT INTO `ps_layered_indexable_feature_lang_value` (`id_feature`, `id_lang`, `url_name`, `meta_title`) VALUES
+(3, 1, '', ''),
+(3, 2, '', '');
 
 -- --------------------------------------------------------
 
@@ -8032,7 +7859,9 @@ INSERT INTO `ps_layered_price_index` (`id_product`, `id_currency`, `id_shop`, `p
 (17, 1, 1, '15.86700', '15.86700', 14),
 (18, 1, 1, '15.86700', '15.86700', 14),
 (19, 1, 1, '17.09700', '17.09700', 14),
-(20, 1, 1, '0.00000', '0.00000', 14);
+(20, 1, 1, '0.00000', '0.00000', 14),
+(22, 1, 1, '2999.00000', '2999.00000', 14),
+(23, 1, 1, '3499.00000', '3499.00000', 14);
 
 -- --------------------------------------------------------
 
@@ -8088,7 +7917,15 @@ INSERT INTO `ps_layered_product_attribute` (`id_attribute`, `id_product`, `id_at
 (24, 18, 4, 1),
 (25, 16, 4, 1),
 (25, 17, 4, 1),
-(25, 18, 4, 1);
+(25, 18, 4, 1),
+(26, 22, 5, 1),
+(26, 23, 5, 1),
+(27, 22, 5, 1),
+(27, 23, 5, 1),
+(28, 22, 6, 1),
+(28, 23, 6, 1),
+(29, 22, 6, 1),
+(29, 23, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -8889,12 +8726,12 @@ INSERT INTO `ps_module` (`id_module`, `name`, `active`, `version`) VALUES
 (54, 'welcome', 1, '6.0.0'),
 (55, 'gamification', 1, '2.3.2'),
 (56, 'emarketing', 1, '2.2.0'),
-(57, 'psaddonsconnect', 1, '2.1.1'),
 (58, 'psgdpr', 1, '1.2.0'),
 (59, 'ps_mbo', 1, '2.0.1'),
 (60, 'ps_buybuttonlite', 1, '1.0.1'),
 (61, 'blockreassurance', 1, '3.0.1'),
-(62, 'ps_facetedsearch', 1, '3.5.0');
+(62, 'ps_facetedsearch', 1, '3.5.0'),
+(63, 'psaddonsconnect', 1, '2.1.1');
 
 -- --------------------------------------------------------
 
@@ -9132,10 +8969,6 @@ INSERT INTO `ps_module_access` (`id_profile`, `id_authorization_role`) VALUES
 (1, 734),
 (1, 735),
 (1, 736),
-(1, 741),
-(1, 742),
-(1, 743),
-(1, 744),
 (1, 745),
 (1, 746),
 (1, 747),
@@ -9155,7 +8988,11 @@ INSERT INTO `ps_module_access` (`id_profile`, `id_authorization_role`) VALUES
 (1, 789),
 (1, 790),
 (1, 791),
-(1, 792);
+(1, 792),
+(1, 793),
+(1, 794),
+(1, 795),
+(1, 796);
 
 -- --------------------------------------------------------
 
@@ -9401,9 +9238,6 @@ INSERT INTO `ps_module_group` (`id_module`, `id_shop`, `id_group`) VALUES
 (56, 1, 1),
 (56, 1, 2),
 (56, 1, 3),
-(57, 1, 1),
-(57, 1, 2),
-(57, 1, 3),
 (58, 1, 1),
 (58, 1, 2),
 (58, 1, 3),
@@ -9418,7 +9252,10 @@ INSERT INTO `ps_module_group` (`id_module`, `id_shop`, `id_group`) VALUES
 (61, 1, 3),
 (62, 1, 1),
 (62, 1, 2),
-(62, 1, 3);
+(62, 1, 3),
+(63, 1, 1),
+(63, 1, 2),
+(63, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -9520,12 +9357,12 @@ INSERT INTO `ps_module_shop` (`id_module`, `id_shop`, `enable_device`) VALUES
 (54, 1, 7),
 (55, 1, 7),
 (56, 1, 7),
-(57, 1, 7),
 (58, 1, 7),
 (59, 1, 7),
 (60, 1, 7),
 (61, 1, 7),
-(62, 1, 7);
+(62, 1, 7),
+(63, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -10136,7 +9973,10 @@ CREATE TABLE `ps_page` (
 --
 
 INSERT INTO `ps_page` (`id_page`, `id_page_type`, `id_object`) VALUES
-(1, 1, NULL);
+(1, 1, NULL),
+(2, 2, NULL),
+(3, 3, NULL),
+(4, 4, 23);
 
 -- --------------------------------------------------------
 
@@ -10169,7 +10009,10 @@ CREATE TABLE `ps_page_type` (
 --
 
 INSERT INTO `ps_page_type` (`id_page_type`, `name`) VALUES
-(1, 'index');
+(3, 'authentication'),
+(1, 'index'),
+(2, 'orderconfirmation'),
+(4, 'product');
 
 -- --------------------------------------------------------
 
@@ -10252,7 +10095,9 @@ CREATE TABLE `ps_product` (
 --
 
 INSERT INTO `ps_product` (`id_product`, `id_supplier`, `id_manufacturer`, `id_category_default`, `id_shop_default`, `id_tax_rules_group`, `on_sale`, `online_only`, `ean13`, `isbn`, `upc`, `ecotax`, `quantity`, `minimal_quantity`, `low_stock_threshold`, `low_stock_alert`, `price`, `wholesale_price`, `unity`, `unit_price_ratio`, `additional_shipping_cost`, `reference`, `supplier_reference`, `location`, `width`, `height`, `depth`, `weight`, `out_of_stock`, `additional_delivery_times`, `quantity_discount`, `customizable`, `uploadable_files`, `text_fields`, `active`, `redirect_type`, `id_type_redirected`, `available_for_order`, `available_date`, `show_condition`, `condition`, `show_price`, `indexed`, `visibility`, `cache_is_pack`, `cache_has_attachments`, `is_virtual`, `cache_default_attribute`, `date_add`, `date_upd`, `advanced_stock_management`, `pack_stock_type`, `state`) VALUES
-(20, 0, 0, 2, 1, 0, 0, 0, '', '', '', '0.000000', 0, 1, NULL, 0, '0.000000', '0.000000', '', '0.000000', '0.00', '', '', '', '0.000000', '0.000000', '0.000000', '0.000000', 2, 1, 0, 0, 0, 0, 0, '', 0, 1, '0000-00-00', 0, 'new', 1, 0, 'both', 0, 0, 0, 0, '2020-11-04 18:35:39', '2020-11-04 18:35:39', 0, 3, 0);
+(21, 0, 0, 2, 1, 0, 0, 0, '', '', '', '0.000000', 0, 1, NULL, 0, '0.000000', '0.000000', '', '0.000000', '0.00', '', '', '', '0.000000', '0.000000', '0.000000', '0.000000', 2, 1, 0, 0, 0, 0, 0, '', 0, 1, '0000-00-00', 0, 'new', 1, 0, 'both', 0, 0, 0, 0, '2020-11-04 23:18:43', '2020-11-05 20:36:57', 0, 3, 0),
+(22, 0, 0, 10, 1, 1, 0, 0, '', '', '', '0.000000', 0, 1, NULL, 0, '2438.211382', '0.000000', '', '0.000000', '0.00', '', '', '', '0.000000', '0.000000', '0.000000', '0.000000', 2, 0, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 54, '2020-11-04 23:20:56', '2020-11-05 23:43:23', 0, 3, 1),
+(23, 0, 0, 10, 1, 1, 0, 0, '', '', '', '0.000000', 0, 1, NULL, 0, '2844.715447', '0.000000', '', '0.000000', '0.00', '', '', '', '0.000000', '0.000000', '0.000000', '0.000000', 2, 0, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 50, '2020-11-05 22:03:33', '2020-11-05 23:42:49', 0, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -10293,6 +10138,20 @@ CREATE TABLE `ps_product_attribute` (
   `available_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `ps_product_attribute`
+--
+
+INSERT INTO `ps_product_attribute` (`id_product_attribute`, `id_product`, `reference`, `supplier_reference`, `location`, `ean13`, `isbn`, `upc`, `wholesale_price`, `price`, `ecotax`, `quantity`, `weight`, `unit_price_impact`, `default_on`, `minimal_quantity`, `low_stock_threshold`, `low_stock_alert`, `available_date`) VALUES
+(50, 23, '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 0, '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
+(51, 23, '', '', '', '', '', '', '0.000000', '500.000000', '0.000000', 0, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
+(52, 23, '', '', '', '', '', '', '0.000000', '300.000000', '0.000000', 0, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
+(53, 23, '', '', '', '', '', '', '0.000000', '800.000000', '0.000000', 0, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
+(54, 22, '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 0, '0.000000', '0.000000', 1, 1, NULL, 1, '0000-00-00'),
+(55, 22, '', '', '', '', '', '', '0.000000', '500.000000', '0.000000', 0, '0.000000', '0.000000', NULL, 1, NULL, 1, '0000-00-00'),
+(56, 22, '', '', '', '', '', '', '0.000000', '200.000000', '0.000000', 0, '0.000000', '0.000000', NULL, 1, NULL, 1, '0000-00-00'),
+(57, 22, '', '', '', '', '', '', '0.000000', '700.000000', '0.000000', 0, '0.000000', '0.000000', NULL, 1, NULL, 1, '0000-00-00');
+
 -- --------------------------------------------------------
 
 --
@@ -10303,6 +10162,28 @@ CREATE TABLE `ps_product_attribute_combination` (
   `id_attribute` int(10) UNSIGNED NOT NULL,
   `id_product_attribute` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ps_product_attribute_combination`
+--
+
+INSERT INTO `ps_product_attribute_combination` (`id_attribute`, `id_product_attribute`) VALUES
+(26, 50),
+(26, 52),
+(26, 54),
+(26, 56),
+(27, 51),
+(27, 53),
+(27, 55),
+(27, 57),
+(28, 50),
+(28, 51),
+(28, 54),
+(28, 55),
+(29, 52),
+(29, 53),
+(29, 56),
+(29, 57);
 
 -- --------------------------------------------------------
 
@@ -10336,6 +10217,20 @@ CREATE TABLE `ps_product_attribute_shop` (
   `low_stock_alert` tinyint(1) NOT NULL DEFAULT 0,
   `available_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ps_product_attribute_shop`
+--
+
+INSERT INTO `ps_product_attribute_shop` (`id_product`, `id_product_attribute`, `id_shop`, `wholesale_price`, `price`, `ecotax`, `weight`, `unit_price_impact`, `default_on`, `minimal_quantity`, `low_stock_threshold`, `low_stock_alert`, `available_date`) VALUES
+(23, 50, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
+(23, 51, 1, '0.000000', '500.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
+(23, 52, 1, '0.000000', '300.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
+(23, 53, 1, '0.000000', '800.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
+(22, 54, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', 1, 1, NULL, 1, '0000-00-00'),
+(22, 55, 1, '0.000000', '500.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 1, '0000-00-00'),
+(22, 56, 1, '0.000000', '200.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 1, '0000-00-00'),
+(22, 57, 1, '0.000000', '700.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 1, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -10420,8 +10315,12 @@ CREATE TABLE `ps_product_lang` (
 --
 
 INSERT INTO `ps_product_lang` (`id_product`, `id_shop`, `id_lang`, `description`, `description_short`, `link_rewrite`, `meta_description`, `meta_keywords`, `meta_title`, `name`, `available_now`, `available_later`, `delivery_in_stock`, `delivery_out_stock`) VALUES
-(20, 1, 1, '', '', '', '', '', '', '', '', '', '', ''),
-(20, 1, 2, '', '', '', '', '', '', '', '', '', '', '');
+(21, 1, 1, '', '', '', '', '', '', '', '', '', '', ''),
+(21, 1, 2, '', '', '', '', '', '', '', '', '', '', ''),
+(22, 1, 1, '<p class=\"lead\">Meksyk zachwyca kolorową kulturą i wyjątkowym w skali światowej dorobkiem cywilizacyjnym. Oficjalna nazwa państwa to Meksykańskie Stany Zjednoczone. Meksyk jest 14. największym państwem na świata, a 11 pod względem największej liczby ludności. <br /><br /> Tradycja oraz etniczność przeplata się tutaj z ciągle rozwijającymi się miastami, które tętnią życiem nocnym i mają wiele do zaoferowania. Podróż do Meksyku to nie tylko wypoczynek, ale także wspaniała okazja do poznania kultury skrajnie odmiennej od polskiej. Dzięki temu taka wycieczka może okazać się wyjątkową przygodą, którą pamiętać będziemy przez lata.</p>', '<p>Wakacje w Meksyku</p>', 'wakacje-w-meksyku', '', '', '', 'Mexico Vacation', '', '', '', ''),
+(22, 1, 2, '<p class=\"lead\">Meksyk zachwyca kolorową kulturą i wyjątkowym w skali światowej dorobkiem cywilizacyjnym. Oficjalna nazwa państwa to Meksykańskie Stany Zjednoczone. Meksyk jest 14. największym państwem na świata, a 11 pod względem największej liczby ludności. <br /><br /> Tradycja oraz etniczność przeplata się tutaj z ciągle rozwijającymi się miastami, które tętnią życiem nocnym i mają wiele do zaoferowania. Podróż do Meksyku to nie tylko wypoczynek, ale także wspaniała okazja do poznania kultury skrajnie odmiennej od polskiej. Dzięki temu taka wycieczka może okazać się wyjątkową przygodą, którą pamiętać będziemy przez lata.</p>', '<p>Wakacje w Meksyku</p>', 'wakacje-w-meksyku', '', '', '', 'Wakacje w Meksyku', '', '', '', ''),
+(23, 1, 1, '<p>Fantastyczny wakacyjny resort z mnóstwem atrakcji. Położony na rozległym terenie wzdłuż zjawiskowej, białej plaży, tuż przy La Estrella, turystycznym \"pueblo\". Architektura hotelu i jego wystrój inspirowane są kolonialnymi motywami, nawiązującymi do miasta Remedios, założonego przez Hiszpanów w XV w. i pierwszej stolicy - Santiago de Cuba. Do budowy użyto tradycyjnych materiałów, a czerwone dachy, witraże, elementy drewniane tworzą niepowtarzalną całość, harmonizującą z bajkowym otoczeniem. Dla wygody turystów po terenie hotelu kursują meleksy. Do dyspozycji Gości są przestronne suite, urządzone w tradycyjnym, kolonialnym stylu. Hotel składa się z trzech części: Paraiso Beach, Grand Memories oraz Sanctuary, dedykowanej tylko pełnoletnim Gościom. Duże baseny, także dla dzieciaków, atrakcje sportowe, animacje dla dorosłych i dla dzieci, duży wybór restauracji tematycznych i barów, sprawiają, że można tu w pełni wykorzystać każdą minutę karaibskich wakacji.</p>', '<p>Cuba Vacation</p>', 'wakacje-na-kubie', '', '', '', 'Cuba Vacation', '', '', '', ''),
+(23, 1, 2, '<p>Fantastyczny wakacyjny resort z mnóstwem atrakcji. Położony na rozległym terenie wzdłuż zjawiskowej, białej plaży, tuż przy La Estrella, turystycznym \"pueblo\". Architektura hotelu i jego wystrój inspirowane są kolonialnymi motywami, nawiązującymi do miasta Remedios, założonego przez Hiszpanów w XV w. i pierwszej stolicy - Santiago de Cuba. Do budowy użyto tradycyjnych materiałów, a czerwone dachy, witraże, elementy drewniane tworzą niepowtarzalną całość, harmonizującą z bajkowym otoczeniem. Dla wygody turystów po terenie hotelu kursują meleksy. Do dyspozycji Gości są przestronne suite, urządzone w tradycyjnym, kolonialnym stylu. Hotel składa się z trzech części: Paraiso Beach, Grand Memories oraz Sanctuary, dedykowanej tylko pełnoletnim Gościom. Duże baseny, także dla dzieciaków, atrakcje sportowe, animacje dla dorosłych i dla dzieci, duży wybór restauracji tematycznych i barów, sprawiają, że można tu w pełni wykorzystać każdą minutę karaibskich wakacji.</p>', '<p>Wakacje na Kubie</p>', 'wakacje-w-meksyku', '', '', '', 'Wakacje na Kubie', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -10483,7 +10382,9 @@ CREATE TABLE `ps_product_shop` (
 --
 
 INSERT INTO `ps_product_shop` (`id_product`, `id_shop`, `id_category_default`, `id_tax_rules_group`, `on_sale`, `online_only`, `ecotax`, `minimal_quantity`, `low_stock_threshold`, `low_stock_alert`, `price`, `wholesale_price`, `unity`, `unit_price_ratio`, `additional_shipping_cost`, `customizable`, `uploadable_files`, `text_fields`, `active`, `redirect_type`, `id_type_redirected`, `available_for_order`, `available_date`, `show_condition`, `condition`, `show_price`, `indexed`, `visibility`, `cache_default_attribute`, `advanced_stock_management`, `date_add`, `date_upd`, `pack_stock_type`) VALUES
-(20, 1, 2, 0, 0, 0, '0.000000', 1, NULL, 0, '0.000000', '0.000000', '', '0.000000', '0.00', 0, 0, 0, 0, '', 0, 1, '0000-00-00', 0, 'new', 1, 0, 'both', 0, 0, '2020-11-04 18:35:39', '2020-11-04 18:35:39', 3);
+(21, 1, 2, 0, 0, 0, '0.000000', 1, NULL, 0, '0.000000', '0.000000', '', '0.000000', '0.00', 0, 0, 0, 0, '', 0, 1, '0000-00-00', 0, 'new', 1, 0, 'both', 0, 0, '2020-11-04 23:18:43', '2020-11-05 20:36:57', 3),
+(22, 1, 10, 1, 0, 0, '0.000000', 1, NULL, 0, '2438.211382', '0.000000', '', '0.000000', '0.00', 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 54, 0, '2020-11-04 23:20:56', '2020-11-05 23:43:23', 3),
+(23, 1, 10, 1, 0, 0, '0.000000', 1, NULL, 0, '2844.715447', '0.000000', '', '0.000000', '0.00', 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 50, 0, '2020-11-05 22:03:33', '2020-11-05 23:42:49', 3);
 
 -- --------------------------------------------------------
 
@@ -10938,6 +10839,364 @@ CREATE TABLE `ps_search_index` (
   `weight` smallint(4) UNSIGNED NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `ps_search_index`
+--
+
+INSERT INTO `ps_search_index` (`id_product`, `id_word`, `weight`) VALUES
+(22, 1423, 1),
+(22, 1468, 1),
+(22, 1469, 1),
+(22, 1470, 1),
+(22, 1471, 1),
+(22, 1472, 1),
+(22, 1473, 1),
+(22, 1474, 1),
+(22, 1475, 1),
+(22, 1476, 1),
+(22, 1477, 1),
+(22, 1478, 1),
+(22, 1479, 1),
+(22, 1480, 1),
+(22, 1481, 1),
+(22, 1482, 1),
+(22, 1483, 1),
+(22, 1484, 1),
+(22, 1485, 1),
+(22, 1486, 1),
+(22, 1487, 1),
+(22, 1488, 1),
+(22, 1489, 1),
+(22, 1490, 1),
+(22, 1491, 1),
+(22, 1492, 1),
+(22, 1493, 1),
+(22, 1494, 1),
+(22, 1495, 1),
+(22, 1496, 1),
+(22, 1497, 1),
+(22, 1498, 1),
+(22, 1499, 1),
+(22, 1500, 1),
+(22, 1501, 1),
+(22, 1502, 1),
+(22, 1503, 1),
+(22, 1504, 1),
+(22, 1505, 1),
+(22, 1506, 1),
+(22, 1507, 1),
+(22, 1508, 1),
+(22, 1509, 1),
+(22, 1510, 1),
+(22, 1511, 1),
+(22, 1512, 1),
+(22, 1513, 1),
+(22, 1514, 1),
+(22, 1515, 1),
+(22, 1516, 1),
+(22, 1517, 1),
+(22, 1518, 1),
+(22, 1519, 1),
+(22, 1520, 1),
+(22, 1521, 1),
+(22, 1522, 1),
+(22, 1523, 1),
+(22, 1524, 1),
+(22, 1525, 1),
+(22, 1526, 1),
+(22, 1527, 1),
+(22, 1528, 1),
+(22, 1529, 1),
+(22, 1530, 1),
+(22, 1531, 1),
+(22, 1532, 1),
+(22, 1533, 1),
+(22, 1760, 1),
+(22, 1761, 1),
+(22, 1762, 1),
+(22, 1763, 1),
+(22, 1764, 1),
+(22, 1765, 1),
+(22, 1766, 1),
+(22, 1767, 1),
+(22, 1768, 1),
+(22, 1769, 1),
+(22, 1770, 1),
+(22, 1771, 1),
+(22, 1772, 1),
+(22, 1773, 1),
+(22, 1774, 1),
+(22, 1775, 1),
+(22, 1776, 1),
+(22, 1777, 1),
+(22, 1778, 1),
+(22, 1779, 1),
+(22, 1780, 1),
+(22, 1781, 1),
+(22, 1782, 1),
+(22, 1783, 1),
+(22, 1784, 1),
+(22, 1785, 1),
+(22, 1786, 1),
+(22, 1787, 1),
+(22, 1788, 1),
+(22, 1789, 1),
+(22, 1790, 1),
+(22, 1791, 1),
+(22, 1792, 1),
+(22, 1793, 1),
+(22, 1794, 1),
+(22, 1795, 1),
+(22, 1796, 1),
+(22, 1797, 1),
+(22, 1798, 1),
+(22, 1799, 1),
+(22, 1800, 1),
+(22, 1801, 1),
+(22, 1802, 1),
+(22, 1803, 1),
+(22, 1804, 1),
+(22, 1805, 1),
+(22, 1806, 1),
+(22, 1807, 1),
+(22, 1808, 1),
+(22, 1809, 1),
+(22, 1810, 1),
+(22, 1811, 1),
+(22, 1812, 1),
+(22, 1813, 1),
+(22, 1814, 1),
+(22, 1815, 1),
+(22, 1816, 1),
+(22, 1817, 1),
+(22, 1818, 1),
+(22, 1424, 2),
+(22, 2284, 2),
+(22, 3778, 2),
+(22, 3779, 2),
+(22, 3882, 2),
+(22, 3883, 2),
+(22, 3884, 2),
+(22, 4816, 2),
+(22, 4921, 2),
+(22, 1429, 3),
+(22, 1430, 3),
+(22, 1616, 3),
+(22, 1617, 3),
+(22, 1823, 6),
+(22, 1824, 6),
+(22, 1427, 7),
+(22, 1428, 8),
+(23, 1493, 1),
+(23, 1496, 1),
+(23, 1510, 1),
+(23, 1513, 1),
+(23, 1532, 1),
+(23, 1783, 1),
+(23, 1796, 1),
+(23, 1799, 1),
+(23, 1817, 1),
+(23, 2229, 1),
+(23, 2230, 1),
+(23, 2231, 1),
+(23, 2232, 1),
+(23, 2233, 1),
+(23, 2234, 1),
+(23, 2235, 1),
+(23, 2236, 1),
+(23, 2237, 1),
+(23, 2238, 1),
+(23, 2239, 1),
+(23, 2240, 1),
+(23, 2241, 1),
+(23, 2242, 1),
+(23, 2243, 1),
+(23, 2244, 1),
+(23, 2245, 1),
+(23, 2246, 1),
+(23, 2247, 1),
+(23, 2248, 1),
+(23, 2249, 1),
+(23, 2250, 1),
+(23, 2251, 1),
+(23, 2252, 1),
+(23, 2253, 1),
+(23, 2254, 1),
+(23, 2255, 1),
+(23, 2256, 1),
+(23, 2257, 1),
+(23, 2258, 1),
+(23, 2259, 1),
+(23, 2260, 1),
+(23, 2261, 1),
+(23, 2262, 1),
+(23, 2263, 1),
+(23, 2264, 1),
+(23, 2265, 1),
+(23, 2266, 1),
+(23, 2267, 1),
+(23, 2268, 1),
+(23, 2269, 1),
+(23, 2270, 1),
+(23, 2271, 1),
+(23, 2272, 1),
+(23, 2273, 1),
+(23, 2274, 1),
+(23, 2275, 1),
+(23, 2276, 1),
+(23, 2277, 1),
+(23, 2278, 1),
+(23, 2279, 1),
+(23, 2280, 1),
+(23, 2281, 1),
+(23, 2282, 1),
+(23, 2283, 1),
+(23, 2285, 1),
+(23, 2286, 1),
+(23, 2287, 1),
+(23, 2288, 1),
+(23, 2289, 1),
+(23, 2290, 1),
+(23, 2291, 1),
+(23, 2292, 1),
+(23, 2293, 1),
+(23, 2294, 1),
+(23, 2295, 1),
+(23, 2296, 1),
+(23, 2297, 1),
+(23, 2298, 1),
+(23, 2299, 1),
+(23, 2300, 1),
+(23, 2301, 1),
+(23, 2302, 1),
+(23, 2303, 1),
+(23, 2304, 1),
+(23, 2305, 1),
+(23, 2306, 1),
+(23, 2307, 1),
+(23, 2308, 1),
+(23, 2309, 1),
+(23, 2310, 1),
+(23, 2311, 1),
+(23, 2312, 1),
+(23, 2313, 1),
+(23, 2314, 1),
+(23, 2315, 1),
+(23, 2316, 1),
+(23, 2317, 1),
+(23, 2318, 1),
+(23, 2319, 1),
+(23, 2320, 1),
+(23, 2321, 1),
+(23, 2331, 1),
+(23, 2332, 1),
+(23, 2333, 1),
+(23, 2334, 1),
+(23, 2335, 1),
+(23, 2336, 1),
+(23, 2337, 1),
+(23, 2338, 1),
+(23, 2339, 1),
+(23, 2340, 1),
+(23, 2341, 1),
+(23, 2342, 1),
+(23, 2343, 1),
+(23, 2344, 1),
+(23, 2345, 1),
+(23, 2346, 1),
+(23, 2347, 1),
+(23, 2348, 1),
+(23, 2349, 1),
+(23, 2350, 1),
+(23, 2351, 1),
+(23, 2352, 1),
+(23, 2353, 1),
+(23, 2354, 1),
+(23, 2355, 1),
+(23, 2356, 1),
+(23, 2357, 1),
+(23, 2358, 1),
+(23, 2359, 1),
+(23, 2360, 1),
+(23, 2361, 1),
+(23, 2362, 1),
+(23, 2363, 1),
+(23, 2364, 1),
+(23, 2365, 1),
+(23, 2366, 1),
+(23, 2367, 1),
+(23, 2368, 1),
+(23, 2369, 1),
+(23, 2370, 1),
+(23, 2371, 1),
+(23, 2372, 1),
+(23, 2373, 1),
+(23, 2374, 1),
+(23, 2375, 1),
+(23, 2376, 1),
+(23, 2377, 1),
+(23, 2378, 1),
+(23, 2379, 1),
+(23, 2380, 1),
+(23, 2381, 1),
+(23, 2382, 1),
+(23, 2383, 1),
+(23, 2384, 1),
+(23, 2385, 1),
+(23, 2386, 1),
+(23, 2387, 1),
+(23, 2388, 1),
+(23, 2389, 1),
+(23, 2390, 1),
+(23, 2391, 1),
+(23, 2392, 1),
+(23, 2393, 1),
+(23, 2394, 1),
+(23, 2395, 1),
+(23, 2396, 1),
+(23, 2397, 1),
+(23, 2398, 1),
+(23, 2399, 1),
+(23, 2400, 1),
+(23, 2401, 1),
+(23, 2402, 1),
+(23, 2403, 1),
+(23, 2404, 1),
+(23, 2405, 1),
+(23, 2406, 1),
+(23, 2407, 1),
+(23, 2408, 1),
+(23, 2409, 1),
+(23, 2410, 1),
+(23, 2411, 1),
+(23, 2412, 1),
+(23, 2413, 1),
+(23, 2414, 1),
+(23, 2415, 1),
+(23, 2416, 1),
+(23, 2417, 1),
+(23, 2418, 1),
+(23, 2419, 1),
+(23, 2420, 1),
+(23, 2421, 1),
+(23, 2422, 1),
+(23, 3778, 2),
+(23, 3779, 2),
+(23, 3882, 2),
+(23, 3883, 2),
+(23, 3884, 2),
+(23, 4816, 2),
+(23, 4921, 2),
+(23, 1429, 3),
+(23, 1430, 3),
+(23, 1616, 3),
+(23, 1617, 3),
+(23, 2284, 3),
+(23, 1427, 7),
+(23, 1824, 7),
+(23, 2330, 7),
+(23, 2228, 8);
+
 -- --------------------------------------------------------
 
 --
@@ -10950,6 +11209,343 @@ CREATE TABLE `ps_search_word` (
   `id_lang` int(10) UNSIGNED NOT NULL,
   `word` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ps_search_word`
+--
+
+INSERT INTO `ps_search_word` (`id_word`, `id_shop`, `id_lang`, `word`) VALUES
+(1512, 1, 1, 'ale'),
+(2306, 1, 1, 'animacje'),
+(2246, 1, 1, 'architektura'),
+(2304, 1, 1, 'atrakcje'),
+(2233, 1, 1, 'atrakcji'),
+(2274, 1, 1, 'bajkowym'),
+(2313, 1, 1, 'barow'),
+(2302, 1, 1, 'baseny'),
+(2294, 1, 1, 'beach'),
+(1531, 1, 1, 'bedziemy'),
+(2239, 1, 1, 'bialej'),
+(2261, 1, 1, 'budowy'),
+(2272, 1, 1, 'calosc'),
+(1498, 1, 1, 'ciagle'),
+(4816, 1, 1, 'class'),
+(2228, 1, 1, 'cuba'),
+(1476, 1, 1, 'cywilizacyjnym'),
+(2265, 1, 1, 'czerwone'),
+(2292, 1, 1, 'czesci'),
+(2266, 1, 1, 'dachy'),
+(2298, 1, 1, 'dedykowanej'),
+(2276, 1, 1, 'dla'),
+(1475, 1, 1, 'dorobkiem'),
+(2307, 1, 1, 'doroslych'),
+(2269, 1, 1, 'drewniane'),
+(2301, 1, 1, 'duze'),
+(2309, 1, 1, 'duzy'),
+(2281, 1, 1, 'dyspozycji'),
+(2308, 1, 1, 'dzieci'),
+(2303, 1, 1, 'dzieciakow'),
+(1521, 1, 1, 'dzieki'),
+(2268, 1, 1, 'elementy'),
+(2243, 1, 1, 'estrella'),
+(1494, 1, 1, 'etnicznosc'),
+(2229, 1, 1, 'fantastyczny'),
+(2282, 1, 1, 'gosci'),
+(2300, 1, 1, 'gosciom'),
+(2295, 1, 1, 'grand'),
+(2273, 1, 1, 'harmonizujaca'),
+(2257, 1, 1, 'hiszpanow'),
+(2289, 1, 1, 'hotel'),
+(2247, 1, 1, 'hotelu'),
+(2250, 1, 1, 'inspirowane'),
+(1616, 1, 1, 'international'),
+(2248, 1, 1, 'jego'),
+(1483, 1, 1, 'jest'),
+(2320, 1, 1, 'karaibskich'),
+(2318, 1, 1, 'kazda'),
+(2287, 1, 1, 'kolonialnym'),
+(2251, 1, 1, 'kolonialnymi'),
+(1470, 1, 1, 'kolorowa'),
+(1529, 1, 1, 'ktora'),
+(1501, 1, 1, 'ktore'),
+(1471, 1, 1, 'kultura'),
+(1517, 1, 1, 'kultury'),
+(2279, 1, 1, 'kursuja'),
+(1533, 1, 1, 'lata'),
+(1490, 1, 1, 'liczby'),
+(1491, 1, 1, 'ludnosci'),
+(1505, 1, 1, 'maja'),
+(2264, 1, 1, 'materialow'),
+(1468, 1, 1, 'meksyk'),
+(1480, 1, 1, 'meksykanskie'),
+(1424, 1, 1, 'meksyku'),
+(2280, 1, 1, 'meleksy'),
+(2296, 1, 1, 'memories'),
+(1823, 1, 1, 'mexico'),
+(2254, 1, 1, 'miasta'),
+(1500, 1, 1, 'miastami'),
+(2319, 1, 1, 'minute'),
+(2232, 1, 1, 'mnostwem'),
+(2252, 1, 1, 'motywami'),
+(1525, 1, 1, 'moze'),
+(2315, 1, 1, 'mozna'),
+(1489, 1, 1, 'najwiekszej'),
+(1484, 1, 1, 'najwiekszym'),
+(2253, 1, 1, 'nawiazujacymi'),
+(1478, 1, 1, 'nazwa'),
+(1509, 1, 1, 'nie'),
+(2271, 1, 1, 'niepowtarzalna'),
+(1504, 1, 1, 'nocnym'),
+(1519, 1, 1, 'odmiennej'),
+(1477, 1, 1, 'oficjalna'),
+(1526, 1, 1, 'okazac'),
+(1515, 1, 1, 'okazja'),
+(1493, 1, 1, 'oraz'),
+(2275, 1, 1, 'otoczeniem'),
+(1530, 1, 1, 'pamietac'),
+(1479, 1, 1, 'panstwa'),
+(1485, 1, 1, 'panstwem'),
+(2293, 1, 1, 'paraiso'),
+(2316, 1, 1, 'pelni'),
+(2299, 1, 1, 'pelnoletnim'),
+(2258, 1, 1, 'pierwszej'),
+(2240, 1, 1, 'plazy'),
+(1487, 1, 1, 'pod'),
+(1508, 1, 1, 'podroz'),
+(2234, 1, 1, 'polozony'),
+(1520, 1, 1, 'polskiej'),
+(1516, 1, 1, 'poznania'),
+(3778, 1, 1, 'premium'),
+(1495, 1, 1, 'przeplata'),
+(2283, 1, 1, 'przestronne'),
+(1532, 1, 1, 'przez'),
+(2242, 1, 1, 'przy'),
+(1528, 1, 1, 'przygoda'),
+(2245, 1, 1, 'pueblo'),
+(2255, 1, 1, 'remedios'),
+(2231, 1, 1, 'resort'),
+(2311, 1, 1, 'restauracji'),
+(2235, 1, 1, 'rozleglym'),
+(1499, 1, 1, 'rozwijajacymi'),
+(2297, 1, 1, 'sanctuary'),
+(2260, 1, 1, 'santiago'),
+(1496, 1, 1, 'sie'),
+(1473, 1, 1, 'skali'),
+(2290, 1, 1, 'sklada'),
+(1518, 1, 1, 'skrajnie'),
+(2305, 1, 1, 'sportowe'),
+(2314, 1, 1, 'sprawiaja'),
+(3779, 1, 1, 'standard'),
+(1481, 1, 1, 'stany'),
+(2259, 1, 1, 'stolicy'),
+(2288, 1, 1, 'stylu'),
+(2284, 1, 1, 'suite'),
+(1486, 1, 1, 'swiata'),
+(1474, 1, 1, 'swiatowej'),
+(1523, 1, 1, 'taka'),
+(1513, 1, 1, 'takze'),
+(2312, 1, 1, 'tematycznych'),
+(1522, 1, 1, 'temu'),
+(2236, 1, 1, 'terenie'),
+(1502, 1, 1, 'tetnia'),
+(1492, 1, 1, 'tradycja'),
+(2263, 1, 1, 'tradycyjnych'),
+(2286, 1, 1, 'tradycyjnym'),
+(1617, 1, 1, 'travel'),
+(2291, 1, 1, 'trzech'),
+(2278, 1, 1, 'turystow'),
+(2244, 1, 1, 'turystycznym'),
+(1497, 1, 1, 'tutaj'),
+(2241, 1, 1, 'tuz'),
+(2270, 1, 1, 'tworza'),
+(1510, 1, 1, 'tylko'),
+(2285, 1, 1, 'urzadzone'),
+(2262, 1, 1, 'uzyto'),
+(1824, 1, 1, 'vacation'),
+(1423, 1, 1, 'wakacje'),
+(2321, 1, 1, 'wakacji'),
+(2230, 1, 1, 'wakacyjny'),
+(1506, 1, 1, 'wiele'),
+(2267, 1, 1, 'witraze'),
+(1514, 1, 1, 'wspaniala'),
+(2310, 1, 1, 'wybor'),
+(1524, 1, 1, 'wycieczka'),
+(1425, 1, 1, 'wycieczki'),
+(2277, 1, 1, 'wygody'),
+(1527, 1, 1, 'wyjatkowa'),
+(1472, 1, 1, 'wyjatkowym'),
+(2317, 1, 1, 'wykorzystac'),
+(1511, 1, 1, 'wypoczynek'),
+(2249, 1, 1, 'wystroj'),
+(2237, 1, 1, 'wzdluz'),
+(1488, 1, 1, 'wzgledem'),
+(1469, 1, 1, 'zachwyca'),
+(1426, 1, 1, 'zagraniczne'),
+(2256, 1, 1, 'zalozonego'),
+(1507, 1, 1, 'zaoferowania'),
+(2238, 1, 1, 'zjawiskowej'),
+(1482, 1, 1, 'zjednoczone'),
+(1503, 1, 1, 'zyciem'),
+(1798, 1, 2, 'ale'),
+(2407, 1, 2, 'animacje'),
+(3882, 1, 2, 'apartament'),
+(2348, 1, 2, 'architektura'),
+(2405, 1, 2, 'atrakcje'),
+(2335, 1, 2, 'atrakcji'),
+(2376, 1, 2, 'bajkowym'),
+(2414, 1, 2, 'barow'),
+(2403, 1, 2, 'baseny'),
+(2395, 1, 2, 'beach'),
+(1816, 1, 2, 'bedziemy'),
+(2341, 1, 2, 'bialej'),
+(2363, 1, 2, 'budowy'),
+(2374, 1, 2, 'calosc'),
+(1786, 1, 2, 'ciagle'),
+(2362, 1, 2, 'cuba'),
+(1768, 1, 2, 'cywilizacyjnym'),
+(2367, 1, 2, 'czerwone'),
+(2393, 1, 2, 'czesci'),
+(2368, 1, 2, 'dachy'),
+(2399, 1, 2, 'dedykowanej'),
+(1767, 1, 2, 'dorobkiem'),
+(2408, 1, 2, 'doroslych'),
+(2371, 1, 2, 'drewniane'),
+(2402, 1, 2, 'duze'),
+(2410, 1, 2, 'duzy'),
+(2382, 1, 2, 'dyspozycji'),
+(2409, 1, 2, 'dzieci'),
+(2404, 1, 2, 'dzieciakow'),
+(1807, 1, 2, 'dzieki'),
+(2370, 1, 2, 'elementy'),
+(2345, 1, 2, 'estrella'),
+(1784, 1, 2, 'etnicznosc'),
+(2331, 1, 2, 'fantastyczny'),
+(2383, 1, 2, 'gosci'),
+(2401, 1, 2, 'gosciom'),
+(2396, 1, 2, 'grand'),
+(2375, 1, 2, 'harmonizujaca'),
+(2358, 1, 2, 'hiszpanow'),
+(2390, 1, 2, 'hotel'),
+(2349, 1, 2, 'hotelu'),
+(2351, 1, 2, 'inspirowane'),
+(2421, 1, 2, 'karaibskich'),
+(2419, 1, 2, 'kazda'),
+(2388, 1, 2, 'kolonialnym'),
+(2352, 1, 2, 'kolonialnymi'),
+(1762, 1, 2, 'kolorowa'),
+(1814, 1, 2, 'ktora'),
+(1789, 1, 2, 'ktore'),
+(2330, 1, 2, 'kubie'),
+(1763, 1, 2, 'kultura'),
+(1803, 1, 2, 'kultury'),
+(2380, 1, 2, 'kursuja'),
+(1818, 1, 2, 'lata'),
+(1780, 1, 2, 'liczby'),
+(1781, 1, 2, 'ludnosci'),
+(2366, 1, 2, 'materialow'),
+(1760, 1, 2, 'meksyk'),
+(1772, 1, 2, 'meksykanskie'),
+(1428, 1, 2, 'meksyku'),
+(2381, 1, 2, 'meleksy'),
+(2397, 1, 2, 'memories'),
+(2355, 1, 2, 'miasta'),
+(1788, 1, 2, 'miastami'),
+(2420, 1, 2, 'minute'),
+(2334, 1, 2, 'mnostwem'),
+(2353, 1, 2, 'motywami'),
+(2416, 1, 2, 'mozna'),
+(1779, 1, 2, 'najwiekszej'),
+(1775, 1, 2, 'najwiekszym'),
+(2354, 1, 2, 'nawiazujacymi'),
+(1770, 1, 2, 'nazwa'),
+(2373, 1, 2, 'niepowtarzalna'),
+(1792, 1, 2, 'nocnym'),
+(1805, 1, 2, 'odmiennej'),
+(1769, 1, 2, 'oficjalna'),
+(1811, 1, 2, 'okazac'),
+(1801, 1, 2, 'okazja'),
+(1783, 1, 2, 'oraz'),
+(2377, 1, 2, 'otoczeniem'),
+(1815, 1, 2, 'pamietac'),
+(1771, 1, 2, 'panstwa'),
+(1776, 1, 2, 'panstwem'),
+(2394, 1, 2, 'paraiso'),
+(2417, 1, 2, 'pelni'),
+(2400, 1, 2, 'pelnoletnim'),
+(2359, 1, 2, 'pierwszej'),
+(2342, 1, 2, 'plazy'),
+(1795, 1, 2, 'podroz'),
+(2336, 1, 2, 'polozony'),
+(1806, 1, 2, 'polskiej'),
+(1802, 1, 2, 'poznania'),
+(3883, 1, 2, 'premium'),
+(1785, 1, 2, 'przeplata'),
+(2384, 1, 2, 'przestronne'),
+(1817, 1, 2, 'przez'),
+(2344, 1, 2, 'przy'),
+(1813, 1, 2, 'przygoda'),
+(2347, 1, 2, 'pueblo'),
+(2356, 1, 2, 'remedios'),
+(2333, 1, 2, 'resort'),
+(2412, 1, 2, 'restauracji'),
+(2337, 1, 2, 'rozleglym'),
+(1787, 1, 2, 'rozwijajacymi'),
+(2398, 1, 2, 'sanctuary'),
+(2361, 1, 2, 'santiago'),
+(1765, 1, 2, 'skali'),
+(2391, 1, 2, 'sklada'),
+(1804, 1, 2, 'skrajnie'),
+(2406, 1, 2, 'sportowe'),
+(2415, 1, 2, 'sprawiaja'),
+(4921, 1, 2, 'standard'),
+(1773, 1, 2, 'stany'),
+(2360, 1, 2, 'stolicy'),
+(2389, 1, 2, 'stylu'),
+(2385, 1, 2, 'suite'),
+(1777, 1, 2, 'swiata'),
+(1766, 1, 2, 'swiatowej'),
+(1809, 1, 2, 'taka'),
+(1799, 1, 2, 'takze'),
+(2413, 1, 2, 'tematycznych'),
+(1808, 1, 2, 'temu'),
+(2338, 1, 2, 'terenie'),
+(1790, 1, 2, 'tetnia'),
+(1782, 1, 2, 'tradycja'),
+(2365, 1, 2, 'tradycyjnych'),
+(2387, 1, 2, 'tradycyjnym'),
+(2392, 1, 2, 'trzech'),
+(2379, 1, 2, 'turystow'),
+(2346, 1, 2, 'turystycznym'),
+(2343, 1, 2, 'tuz'),
+(2372, 1, 2, 'tworza'),
+(1796, 1, 2, 'tylko'),
+(2386, 1, 2, 'urzadzone'),
+(2364, 1, 2, 'uzyto'),
+(1427, 1, 2, 'wakacje'),
+(2422, 1, 2, 'wakacji'),
+(2332, 1, 2, 'wakacyjny'),
+(1793, 1, 2, 'wiele'),
+(2369, 1, 2, 'witraze'),
+(1800, 1, 2, 'wspaniala'),
+(2411, 1, 2, 'wybor'),
+(1810, 1, 2, 'wycieczka'),
+(1429, 1, 2, 'wycieczki'),
+(2378, 1, 2, 'wygody'),
+(1812, 1, 2, 'wyjatkowa'),
+(1764, 1, 2, 'wyjatkowym'),
+(2418, 1, 2, 'wykorzystac'),
+(1797, 1, 2, 'wypoczynek'),
+(2350, 1, 2, 'wystroj'),
+(2339, 1, 2, 'wzdluz'),
+(1778, 1, 2, 'wzgledem'),
+(1761, 1, 2, 'zachwyca'),
+(1430, 1, 2, 'zagraniczne'),
+(2357, 1, 2, 'zalozonego'),
+(1794, 1, 2, 'zaoferowania'),
+(2340, 1, 2, 'zjawiskowej'),
+(1774, 1, 2, 'zjednoczone'),
+(3884, 1, 2, 'zwykly'),
+(1791, 1, 2, 'zyciem');
 
 -- --------------------------------------------------------
 
@@ -11112,6 +11708,14 @@ CREATE TABLE `ps_specific_price_priority` (
   `id_product` int(11) NOT NULL,
   `priority` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ps_specific_price_priority`
+--
+
+INSERT INTO `ps_specific_price_priority` (`id_specific_price_priority`, `id_product`, `priority`) VALUES
+(1, 22, 'id_shop;id_currency;id_country;id_group'),
+(15, 23, 'id_shop;id_currency;id_country;id_group');
 
 -- --------------------------------------------------------
 
@@ -11576,7 +12180,17 @@ INSERT INTO `ps_stock_available` (`id_stock_available`, `id_product`, `id_produc
 (67, 3, 0, 1, 0, 0, 0, 0, 0, 0, ''),
 (68, 2, 0, 1, 0, 0, 0, 0, 0, 0, ''),
 (69, 1, 0, 1, 0, 0, 0, 0, 0, 0, ''),
-(70, 20, 0, 1, 0, 0, 0, 0, 0, 2, '');
+(71, 21, 0, 1, 0, 0, 0, 0, 0, 2, ''),
+(72, 22, 0, 1, 0, 320, 60, 1, 0, 2, ''),
+(73, 23, 0, 1, 0, 240, 0, 0, 0, 2, ''),
+(84, 23, 50, 1, 0, 60, 0, 0, 0, 2, ''),
+(85, 23, 51, 1, 0, 60, 0, 0, 0, 2, ''),
+(86, 23, 52, 1, 0, 60, 0, 0, 0, 2, ''),
+(87, 23, 53, 1, 0, 60, 0, 0, 0, 2, ''),
+(88, 22, 54, 1, 0, 80, 0, 0, 0, 2, ''),
+(89, 22, 55, 1, 0, 80, 0, 0, 0, 2, ''),
+(90, 22, 56, 1, 0, 80, 0, 0, 0, 2, ''),
+(91, 22, 57, 1, 0, 80, 0, 0, 0, 2, '');
 
 -- --------------------------------------------------------
 
@@ -15507,7 +16121,7 @@ ALTER TABLE `ps_address`
 -- AUTO_INCREMENT for table `ps_admin_filter`
 --
 ALTER TABLE `ps_admin_filter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `ps_advice`
@@ -15537,13 +16151,13 @@ ALTER TABLE `ps_attachment_lang`
 -- AUTO_INCREMENT for table `ps_attribute`
 --
 ALTER TABLE `ps_attribute`
-  MODIFY `id_attribute` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_attribute` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `ps_attribute_group`
 --
 ALTER TABLE `ps_attribute_group`
-  MODIFY `id_attribute_group` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_attribute_group` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `ps_attribute_impact`
@@ -15555,7 +16169,7 @@ ALTER TABLE `ps_attribute_impact`
 -- AUTO_INCREMENT for table `ps_authorization_role`
 --
 ALTER TABLE `ps_authorization_role`
-  MODIFY `id_authorization_role` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=793;
+  MODIFY `id_authorization_role` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=797;
 
 --
 -- AUTO_INCREMENT for table `ps_badge`
@@ -15633,7 +16247,7 @@ ALTER TABLE `ps_condition`
 -- AUTO_INCREMENT for table `ps_configuration`
 --
 ALTER TABLE `ps_configuration`
-  MODIFY `id_configuration` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=370;
+  MODIFY `id_configuration` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=371;
 
 --
 -- AUTO_INCREMENT for table `ps_configuration_kpi`
@@ -15807,7 +16421,7 @@ ALTER TABLE `ps_hook_module_exceptions`
 -- AUTO_INCREMENT for table `ps_image`
 --
 ALTER TABLE `ps_image`
-  MODIFY `id_image` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_image` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `ps_image_type`
@@ -15903,7 +16517,7 @@ ALTER TABLE `ps_meta`
 -- AUTO_INCREMENT for table `ps_module`
 --
 ALTER TABLE `ps_module`
-  MODIFY `id_module` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id_module` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `ps_module_history`
@@ -15999,7 +16613,7 @@ ALTER TABLE `ps_order_state`
 -- AUTO_INCREMENT for table `ps_page`
 --
 ALTER TABLE `ps_page`
-  MODIFY `id_page` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_page` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `ps_pagenotfound`
@@ -16011,19 +16625,19 @@ ALTER TABLE `ps_pagenotfound`
 -- AUTO_INCREMENT for table `ps_page_type`
 --
 ALTER TABLE `ps_page_type`
-  MODIFY `id_page_type` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_page_type` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `ps_product`
 --
 ALTER TABLE `ps_product`
-  MODIFY `id_product` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_product` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `ps_product_attribute`
 --
 ALTER TABLE `ps_product_attribute`
-  MODIFY `id_product_attribute` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_product_attribute` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `ps_product_download`
@@ -16059,7 +16673,7 @@ ALTER TABLE `ps_psgdpr_consent_lang`
 -- AUTO_INCREMENT for table `ps_psgdpr_log`
 --
 ALTER TABLE `ps_psgdpr_log`
-  MODIFY `id_gdpr_log` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_gdpr_log` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `ps_quick_access`
@@ -16131,7 +16745,7 @@ ALTER TABLE `ps_search_engine`
 -- AUTO_INCREMENT for table `ps_search_word`
 --
 ALTER TABLE `ps_search_word`
-  MODIFY `id_word` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1423;
+  MODIFY `id_word` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9330;
 
 --
 -- AUTO_INCREMENT for table `ps_sekeyword`
@@ -16167,7 +16781,7 @@ ALTER TABLE `ps_specific_price`
 -- AUTO_INCREMENT for table `ps_specific_price_priority`
 --
 ALTER TABLE `ps_specific_price_priority`
-  MODIFY `id_specific_price_priority` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_specific_price_priority` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `ps_specific_price_rule`
@@ -16209,13 +16823,13 @@ ALTER TABLE `ps_stock`
 -- AUTO_INCREMENT for table `ps_stock_available`
 --
 ALTER TABLE `ps_stock_available`
-  MODIFY `id_stock_available` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id_stock_available` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `ps_stock_mvt`
 --
 ALTER TABLE `ps_stock_mvt`
-  MODIFY `id_stock_mvt` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_stock_mvt` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `ps_stock_mvt_reason`
