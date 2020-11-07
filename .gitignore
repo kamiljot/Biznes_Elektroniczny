@@ -4,3 +4,6 @@
 /var/logs
 /var/cache
 /var/sessions
+
+.vscode
+/.vscode
