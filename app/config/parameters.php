@@ -3,7 +3,7 @@
   array (
     'database_host' => '127.0.0.1',
     'database_port' => '',
-    'database_name' => 'prestashop',
+    'database_name' => 'biznes_elektroniczny',
     'database_user' => 'root',
     'database_password' => '',
     'database_prefix' => 'ps_',

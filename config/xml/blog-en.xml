@@ -6,6 +6,22 @@
     <language>en</language>
      <atom:link href="https://www.prestashop.com/en/blog/feed.xml" rel="self" type="application/rss+xml" />
       <item>
+    <title>PrestaShop is committed to supporting commerce</title>
+    <link>https://www.prestashop.com/en/blog/prestashop-supporting-commerce</link>
+    <description>Dear members of the PrestaShop ecosystem,</description>
+     <pubDate>Fri, 06 Nov 2020 17:12:39 +0100</pubDate>
+ <dc:creator>Alexandre Eruimy</dc:creator>
+ <guid isPermaLink="false">https://www.prestashop.com/en/blog/prestashop-supporting-commerce</guid>
+  </item>
+  <item>
+    <title>Three predictions for festive season shopping in 2020</title>
+    <link>https://www.prestashop.com/en/blog/predictions-shopping-2020</link>
+    <description>The 2020 festive season will be unlike any other.</description>
+     <pubDate>Fri, 06 Nov 2020 17:09:49 +0100</pubDate>
+ <dc:creator>Edwina Yvonne Dendler</dc:creator>
+ <guid isPermaLink="false">https://www.prestashop.com/en/blog/predictions-shopping-2020</guid>
+  </item>
+  <item>
     <title>Why fast shipments are important for e-commerce customer satisfaction</title>
     <link>https://www.prestashop.com/en/blog/fast-shipments-e-commerce</link>
     <description>Today customers and consumers hold a huge buying power and all of the entrepreneurs’ actions for their own business are dedicated and revolve around the customer.</description>
@@ -68,22 +84,6 @@
      <pubDate>Mon, 28 Sep 2020 16:33:53 +0200</pubDate>
  <dc:creator>Sara Lázaro EN</dc:creator>
  <guid isPermaLink="false">https://www.prestashop.com/en/blog/translation-internationalization-ecommerce</guid>
-  </item>
-  <item>
-    <title>PSD2: EU mandatory strong authentication by the end of 2020: be ready!</title>
-    <link>https://www.prestashop.com/en/blog/psd2-strong-authentication</link>
-    <description> </description>
-     <pubDate>Fri, 25 Sep 2020 16:25:49 +0200</pubDate>
- <dc:creator>PrestaShop Team</dc:creator>
- <guid isPermaLink="false">https://www.prestashop.com/en/blog/psd2-strong-authentication</guid>
-  </item>
-  <item>
-    <title>Marketplaces: what are the main difficulties encountered by retailers, and what are the solutions?</title>
-    <link>https://www.prestashop.com/en/blog/marketfire-marketplaces-retailers</link>
-    <description>During the release of the Marketfire e-commerce solution module on the PrestaShop Addons Ma</description>
-     <pubDate>Tue, 15 Sep 2020 17:49:48 +0200</pubDate>
- <dc:creator>PrestaShop Team</dc:creator>
- <guid isPermaLink="false">https://www.prestashop.com/en/blog/marketfire-marketplaces-retailers</guid>
   </item>
   </channel>
 </rss>
