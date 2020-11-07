@@ -1,2 +1,2 @@
 <?xml version="1.0"?>
-<modules_list><modules type="untrusted"><module name="statsbestmanufacturers"/></modules></modules_list>
+<modules_list><modules type="untrusted"><module name="dotpay"/><module name="statsbestmanufacturers"/></modules></modules_list>
