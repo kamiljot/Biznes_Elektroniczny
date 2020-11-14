@@ -1,11 +1,11 @@
 <?php return array (
   'parameters' => 
   array (
-    'database_host' => '127.0.0.1',
+    'database_host' => 'db',
     'database_port' => '',
     'database_name' => 'biznes_elektroniczny',
-    'database_user' => 'root',
-    'database_password' => '',
+    'database_user' => 'biznes_elektroniczny',
+    'database_password' => 'toor',
     'database_prefix' => 'ps_',
     'database_engine' => 'InnoDB',
     'mailer_transport' => 'smtp',
