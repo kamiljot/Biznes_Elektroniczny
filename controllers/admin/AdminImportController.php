@@ -1172,8 +1172,9 @@ class AdminImportControllerCore extends AdminController
      *
      * @return bool
      */
-    protected static function copyImg($id_entity, $id_image = null, $url = '', $entity = 'products', $regenerate = true)
+    protected static function copyImg($id_entity, $id_image = null, $url = '', $entity = 'products', $regenerate = true, $urlencoded = true)
     {
+        $og_url = $url;
         $tmpfile = tempnam(_PS_TMP_IMG_DIR_, 'ps_import');
         $watermark_types = explode(',', Configuration::get('WATERMARK_TYPES'));
 
@@ -1226,6 +1227,9 @@ class AdminImportControllerCore extends AdminController
         }
 
         $url = http_build_url('', $parced_url);
+        if (!$urlencoded) {
+            $url = $og_url;
+        }
 
         $orig_tmpfile = $tmpfile;
 
