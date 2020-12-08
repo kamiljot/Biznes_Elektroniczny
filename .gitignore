@@ -4,6 +4,7 @@
 /var/logs
 /var/cache
 /var/sessions
+/mysql_data
 
 .vscode
 /.vscode
