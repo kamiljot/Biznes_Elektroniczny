@@ -10,5 +10,5 @@ COPY ssl/server.key /etc/ssl/private/ssl-cert-snakeoil.key
 
 RUN a2ensite default-ssl
 
-RUN git clone https://github.com/kamiljot/Biznes_Elektroniczny /var/www/html/Biznes_Elektroniczny/
+RUN git clone --branch docker-copy-repo https://github.com/kamiljot/Biznes_Elektroniczny /var/www/html/Biznes_Elektroniczny/
 
