@@ -255,7 +255,7 @@ class PrestaShopAutoload
 
         // Will create a temp file with 0600 access rights
         // when the filesystem supports chmod.
-        $tmpFile = tempnam($dir, basename($filename));
+        $tmpFile = @tempnam($dir, basename($filename));
         if (false === @file_put_contents($tmpFile, $content)) {
             return false;
         }
