@@ -1,5 +1,6 @@
 FROM php:7.2-apache
 
+RUN apt update -y && apt install -y git
 RUN docker-php-ext-install mysqli pdo_mysql
 
 RUN a2enmod rewrite ssl
