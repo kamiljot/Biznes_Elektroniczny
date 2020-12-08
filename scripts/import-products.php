@@ -87,7 +87,7 @@ foreach ($data as $csv) {
     }
 
     $csv_values = explode(";", $csv);
-    //"Product ID";Active;Name;"Categories (x,y,z...)";Description;"Price tax excluded";Position;ImageUri
+    //"Product ID";Active;Name;"Categories (x,y,z...)";Description;"Price tax included";Position;ImageUri
     $product = new Product();
     $product->id = $csv_values[0];
     $product->active = $csv_values[1];
@@ -97,6 +97,7 @@ foreach ($data as $csv) {
     $product->id_category_default = $csv_values[3];
     $product->description = [$lang => substr($csv_values[4], 1, -1)];
     $product->price = floatval(substr($csv_values[5], 1, -1));
+    $product->price = number_format($product->price / 1.23, 6, '.', ''); # price is notax, currency is ok if we only use pln
     $product->quantity = round(rand(30, 130), -1); // round to nearest 10
     $product->redirect_type = '404';
     $product->minimal_quantity = 1;

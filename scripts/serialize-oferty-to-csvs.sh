@@ -52,7 +52,7 @@ gen_categories_csv() {
 }
 
 create_products_csv_with_header() {
-  echo "\"Product ID\";Active;Name;\"Categories (x,y,z...)\";Description;\"Price tax excluded\";Position;ImageUri"\
+  echo "\"Product ID\";Active;Name;\"Categories (x,y,z...)\";Description;\"Price tax included\";Position;ImageUri"\
     > "$PRODUCTS_OUT_FILE"
 }
 
@@ -87,7 +87,7 @@ generate_product_data() {
 PRODUCT_ID=24 # start at 24 (keep old products)
 PRODUCT_POSITION=0
 serialize_product_to_csv() {
-  local _product_price_notax=""
+  local _product_price_tax=""
   local _product_description=""
   local _product_data_dir="$1"
   local _product_image_paths=()
@@ -108,7 +108,7 @@ serialize_product_to_csv() {
     echo "Generated product data"
   fi
   _product_name="$(echo "$_product_data" | awk -F';' '{ print $1 }')"
-  _product_price_notax="$(echo "$_product_data" | awk -F';' '{ print $2 }')"
+  _product_price_tax="$(echo "$_product_data" | awk -F';' '{ print $2 }')"
   _product_date="$(echo "$_product_data" | awk -F';' '{ print $3 }')"
   _product_description="$(echo "$_product_data" | awk -F';' '{ print $4 }')"
   _product_image_paths="$(find . -iname "*jpg")"
@@ -120,7 +120,7 @@ serialize_product_to_csv() {
   _product_csv_line+="\"$_product_name\";"
   _product_csv_line+="$_product_category_id;"
   _product_csv_line+="\"$_product_description\";"
-  _product_csv_line+="\"${_product_price_notax//[^0-9]/}\";"
+  _product_csv_line+="\"${_product_price_tax//[^0-9]/}\";"
   _product_csv_line+="$((PRODUCT_POSITION++));"
   if [ -e "$_product_data_dir/0.jpg" ]; then
     _product_image_path="$(realpath "$_product_data_dir/0.jpg")"
