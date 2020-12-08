@@ -16,11 +16,14 @@ services:
       MYSQL_USER: biznes_elektroniczny
       MYSQL_PASSWORD: toor
 
-  adminer:
-    image: adminer:4.7
+  phpmyadmin:
+    image: phpmyadmin:5.0.4
     restart: always
     ports:
-      - 8080:8080
+      - 8080:80
+    environment:
+      MYSQL_USER: biznes_elektroniczny
+      MYSQL_PASSWORD: toor
 
   prestashop:
     build: .
@@ -29,6 +32,7 @@ services:
       - db
     ports:
       - 80:80
+      - 443:443
     volumes:
       - ./:/var/www/html/Biznes_Elektroniczny/
 

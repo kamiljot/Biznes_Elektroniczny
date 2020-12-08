@@ -63,9 +63,9 @@ class AdminLoginControllerCore extends AdminController
     {
         if (!Tools::usingSecureMode() && Configuration::get('PS_SSL_ENABLED')) {
             // You can uncomment these lines if you want to force https even from localhost and automatically redirect
-            // header('HTTP/1.1 301 Moved Permanently');
-            // header('Location: '.Tools::getShopDomainSsl(true).$_SERVER['REQUEST_URI']);
-            // exit();
+            header('HTTP/1.1 301 Moved Permanently');
+            header('Location: '.Tools::getShopDomainSsl(true).$_SERVER['REQUEST_URI']);
+            exit();
             $clientIsMaintenanceOrLocal = in_array(Tools::getRemoteAddr(), array_merge(array('127.0.0.1'), explode(',', Configuration::get('PS_MAINTENANCE_IP'))));
             // If ssl is enabled, https protocol is required. Exception for maintenance and local (127.0.0.1) IP
             if ($clientIsMaintenanceOrLocal) {
