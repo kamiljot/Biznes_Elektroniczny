@@ -6,7 +6,8 @@ RUN apt-get update -y &&\
       libjpeg62-turbo-dev \
       libwebp-dev \
       libxpm-dev \
-      libpng-dev
+      libpng-dev \
+      zlib1g-dev libicu-dev g++
 
 RUN docker-php-ext-configure gd\
     --with-gd \
@@ -17,8 +18,9 @@ RUN docker-php-ext-configure gd\
     --with-xpm-dir \
     --with-freetype-dir
 
-RUN docker-php-ext-install mysqli pdo_mysql gd
-RUN docker-php-ext-enable mysqli pdo_mysql gd
+RUN docker-php-ext-configure intl
+RUN docker-php-ext-install mysqli pdo_mysql gd intl
+RUN docker-php-ext-enable mysqli pdo_mysql gd intl
 
 RUN a2enmod rewrite ssl
 
