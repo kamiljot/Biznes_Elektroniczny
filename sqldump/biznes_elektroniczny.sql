@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Dec 02, 2020 at 08:31 PM
+-- Generation Time: Dec 07, 2020 at 07:44 PM
 -- Server version: 8.0.22
 -- PHP Version: 7.4.13
 
@@ -1169,7 +1169,8 @@ INSERT INTO `ps_admin_filter` (`id`, `employee`, `shop`, `controller`, `action`,
 (4, 1, 1, '', '', '{\"orderBy\":\"position\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_cms_category_parent\":1}}', 'cms_page'),
 (5, 1, 1, '', '', '{\"limit\":10,\"orderBy\":\"name\",\"sortOrder\":\"asc\",\"filters\":[]}', 'manufacturer'),
 (6, 1, 1, '', '', '{\"limit\":10,\"orderBy\":\"id_address\",\"sortOrder\":\"desc\",\"filters\":[]}', 'manufacturer_address'),
-(7, 1, 1, 'meta', 'index', '{\"limit\":50,\"orderBy\":\"id_meta\",\"sortOrder\":\"asc\",\"filters\":[]}', '');
+(7, 1, 1, 'meta', 'index', '{\"limit\":50,\"orderBy\":\"id_meta\",\"sortOrder\":\"asc\",\"filters\":[]}', ''),
+(8, 1, 1, '', '', '{\"limit\":50,\"orderBy\":\"id_lang\",\"sortOrder\":\"ASC\",\"filters\":[]}', 'language');
 
 -- --------------------------------------------------------
 
@@ -4410,7 +4411,7 @@ CREATE TABLE `ps_configuration` (
 --
 
 INSERT INTO `ps_configuration` (`id_configuration`, `id_shop_group`, `id_shop`, `name`, `value`, `date_add`, `date_upd`) VALUES
-(1, NULL, NULL, 'PS_LANG_DEFAULT', '1', '2020-11-02 19:32:40', '2020-11-02 19:32:40'),
+(1, NULL, NULL, 'PS_LANG_DEFAULT', '2', '2020-11-02 19:32:40', '2020-12-07 20:41:00'),
 (2, NULL, NULL, 'PS_VERSION_DB', '1.7.6.8', '2020-11-02 19:32:40', '2020-11-02 19:32:40'),
 (3, NULL, NULL, 'PS_INSTALL_VERSION', '1.7.6.8', '2020-11-02 19:32:40', '2020-11-02 19:32:40'),
 (4, NULL, NULL, 'PS_CARRIER_DEFAULT', '1', '2020-11-02 19:32:42', '2020-11-02 19:32:42'),
@@ -6630,7 +6631,7 @@ CREATE TABLE `ps_employee` (
 --
 
 INSERT INTO `ps_employee` (`id_employee`, `id_profile`, `id_lang`, `lastname`, `firstname`, `email`, `passwd`, `last_passwd_gen`, `stats_date_from`, `stats_date_to`, `stats_compare_from`, `stats_compare_to`, `stats_compare_option`, `preselect_date_range`, `bo_color`, `bo_theme`, `bo_css`, `default_tab`, `bo_width`, `bo_menu`, `active`, `optin`, `id_last_order`, `id_last_customer_message`, `id_last_customer`, `last_connection_date`, `reset_password_token`, `reset_password_validity`) VALUES
-(1, 1, 1, 'Kowalski', 'Jan', 'piotru92@gmail.com', '$2y$10$AS1JwIPEjbcbFTcOX1W1luQsQhHxnxzTA5YMrf/0saokyNuRU6m7i', '2020-11-02 12:32:49', '2020-10-02', '2020-11-02', '0000-00-00', '0000-00-00', 1, NULL, NULL, 'default', 'theme.css', 1, 0, 1, 1, 1, 6, 0, 2, '2020-11-07', NULL, '0000-00-00 00:00:00');
+(1, 1, 2, 'Kowalski', 'Jan', 'piotru92@gmail.com', '$2y$10$AS1JwIPEjbcbFTcOX1W1luQsQhHxnxzTA5YMrf/0saokyNuRU6m7i', '2020-11-02 12:32:49', '2020-10-02', '2020-11-02', '0000-00-00', '0000-00-00', 1, '', '', 'default', 'theme.css', 1, 0, 1, 1, 1, 7, 0, 5, '2020-12-07', '', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -8041,7 +8042,7 @@ CREATE TABLE `ps_lang` (
 --
 
 INSERT INTO `ps_lang` (`id_lang`, `name`, `active`, `iso_code`, `language_code`, `locale`, `date_format_lite`, `date_format_full`, `is_rtl`) VALUES
-(1, 'English (English)', 1, 'en', 'en-us', 'en-US', 'm/d/Y', 'm/d/Y H:i:s', 0),
+(1, 'English (English)', 0, 'en', 'en-us', 'en-US', 'm/d/Y', 'm/d/Y H:i:s', 0),
 (2, 'Polski (Polish)', 1, 'pl', 'pl', 'pl-PL', 'Y-m-d', 'Y-m-d H:i:s', 0);
 
 -- --------------------------------------------------------
@@ -16894,7 +16895,7 @@ ALTER TABLE `ps_address`
 -- AUTO_INCREMENT for table `ps_admin_filter`
 --
 ALTER TABLE `ps_admin_filter`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `ps_advice`
