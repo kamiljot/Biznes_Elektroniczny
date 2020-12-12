@@ -19,8 +19,8 @@ RUN docker-php-ext-configure gd\
     --with-freetype-dir
 
 RUN docker-php-ext-configure intl
-RUN docker-php-ext-install mysqli pdo_mysql gd intl
-RUN docker-php-ext-enable mysqli pdo_mysql gd intl
+RUN docker-php-ext-install mysqli pdo_mysql gd intl zip
+RUN docker-php-ext-enable mysqli pdo_mysql gd intl zip
 
 RUN a2enmod rewrite ssl
 
