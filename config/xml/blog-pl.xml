@@ -6,6 +6,14 @@
     <language>pl</language>
      <atom:link href="https://www.prestashop.com/pl/blog/feed.xml" rel="self" type="application/rss+xml" />
       <item>
+    <title>Jak optymalizować zamówienia i dostawę?</title>
+    <link>https://www.prestashop.com/pl/blog/optymalizowac-zamowienia-dostawe</link>
+    <description>Automatyzacja to jedno z narzędzi, na którym można bezpiecznie polegać w kontekście logistyki e-commerce.</description>
+     <pubDate>Thu, 10 Dec 2020 15:48:41 +0100</pubDate>
+ <dc:creator>luca mastroianni</dc:creator>
+ <guid isPermaLink="false">https://www.prestashop.com/pl/blog/optymalizowac-zamowienia-dostawe</guid>
+  </item>
+  <item>
     <title>5 sposobów na poprawę doświadczenia Twoich klientów za pomocą cyfrowych narzędzi</title>
     <link>https://www.prestashop.com/pl/blog/sposobow-twoich-klientow</link>
     <description>Internet staje się powszechnym miejscem robienia zakupów – aż 73% internautów w Polsce kupowało już</description>
@@ -76,14 +84,6 @@
      <pubDate>Tue, 10 Nov 2020 15:39:21 +0100</pubDate>
  <dc:creator>Paweł Gil</dc:creator>
  <guid isPermaLink="false">https://www.prestashop.com/pl/blog/krokow-ktore-nalezy</guid>
-  </item>
-  <item>
-    <title>Kruk &amp;amp; Waynet: Nowoczesne podejście do biznesu  z ponad 180 letnią tradycją</title>
-    <link>https://www.prestashop.com/pl/blog/kruk-waynet-prestashop</link>
-    <description>Ania Kruk to marka biżuterii modowej, którą w 2012 r. założyło rodzeństwo Anna i Wojciech Kruk.</description>
-     <pubDate>Thu, 05 Nov 2020 15:36:58 +0100</pubDate>
- <dc:creator>luca mastroianni</dc:creator>
- <guid isPermaLink="false">https://www.prestashop.com/pl/blog/kruk-waynet-prestashop</guid>
   </item>
   </channel>
 </rss>
