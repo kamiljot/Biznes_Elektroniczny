@@ -23,6 +23,28 @@ function copy_img($id_product, $image_path) {
     return false;
 }
 
+function add_attribute(Product $product, $idsAttributes, float $price_added, bool $is_default = false) {
+    $id = $product->addAttribute(
+        $price_added,0.0, 0.0, 0.0, "", "", "", $is_default,
+        null, null, 1, array(), null, 20, "", 1, true);
+    $combination = new Combination((int) $id);
+    $combination->setAttributes($idsAttributes);
+    StockAvailable::setQuantity((int)$product->id, $id, 20, Context::getContext()->shop->id);
+    return $id;
+}
+
+function add_attributes(Product $product) {
+    // attributes, ap standard(26) premium(27), lot standard(28) premium(29)
+    // ap standard/lot standard
+    add_attribute($product, [26, 28], 0.0, true);
+    // ap premium/lot standard
+    add_attribute($product, [27, 28],500.0);
+    // ap premium/lot premium
+    add_attribute($product, [27, 29], 700.0);
+    // ap standard/lot premium
+    add_attribute($product, [26, 29], 200.0);
+}
+
 if (!is_dir(SCRIPTS_DIR . '/../oferty/')) {
     echo "Error: Scraped products are missing";
     die();
@@ -126,7 +148,7 @@ foreach ($data as $csv) {
     $product->link_rewrite = [$lang=>$product_link_rewrite];
     if ($product->add(true)) {
         $product->updateCategories([$csv_values[3]]);
-        StockAvailable::setQuantity((int)$product->id, 0, $product->quantity, Context::getContext()->shop->id);
+        add_attributes($product);
         if (!empty($product_image_path)) {
             // TODO: support multiple images
             copy_img($product->id, $product_image_path);
