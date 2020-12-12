@@ -23,6 +23,11 @@ function copy_img($id_product, $image_path) {
     return false;
 }
 
+if (!is_dir(SCRIPTS_DIR . '/../oferty/')) {
+    echo "Error: Scraped products are missing";
+    die();
+}
+
 if (!is_readable(CATEGORIES_CSV) || !is_readable(PRODUCTS_CSV)) {
     $out = shell_exec('./serialize-oferty-to-csvs.sh');
     if ($out == null) {
