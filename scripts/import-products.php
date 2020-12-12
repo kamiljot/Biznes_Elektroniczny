@@ -54,6 +54,7 @@ if (!is_readable(CATEGORIES_CSV) || !is_readable(PRODUCTS_CSV)) {
     $out = shell_exec(SCRIPTS_DIR . '/serialize-oferty-to-csvs.sh');
     if ($out == null) {
         echo "Error: Cannot extract products and categories from scraped data";
+        echo $out;
         die();
     }
     assert(is_readable(CATEGORIES_CSV) && is_readable(PRODUCTS_CSV));
