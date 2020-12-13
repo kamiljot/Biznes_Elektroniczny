@@ -6,4 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'OnBoarding\\Configuration' => $baseDir . '/OnBoarding/Configuration.php',
+    'OnBoarding\\OnBoarding' => $baseDir . '/OnBoarding/OnBoarding.php',
 );

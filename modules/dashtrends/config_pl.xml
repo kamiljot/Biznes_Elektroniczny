@@ -2,7 +2,7 @@
 <module>
     <name>dashtrends</name>
     <displayName><![CDATA[Pulpit Trend&oacute;w]]></displayName>
-    <version><![CDATA[2.0.2]]></version>
+    <version><![CDATA[2.0.3]]></version>
     <description><![CDATA[Dodaje blok z graficznym wykresem zmian podstawowych danych Twojego sklepu bazującym na wybranych kluczowych danych.]]></description>
     <author><![CDATA[PrestaShop]]></author>
     <tab><![CDATA[dashboard]]></tab>

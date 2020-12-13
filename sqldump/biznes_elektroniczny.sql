@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Dec 13, 2020 at 12:03 AM
+-- Generation Time: Dec 13, 2020 at 12:13 AM
 -- Server version: 8.0.22
 -- PHP Version: 7.4.13
 
@@ -4705,7 +4705,7 @@ INSERT INTO `ps_configuration` (`id_configuration`, `id_shop_group`, `id_shop`, 
 (349, NULL, NULL, 'EMARKETING_FB_VIEWCONTENT', NULL, '2020-11-02 19:33:55', '2020-11-02 19:33:55'),
 (350, NULL, NULL, 'EMARKETING_FB_ADDTOCART', NULL, '2020-11-02 19:33:55', '2020-11-02 19:33:55'),
 (351, NULL, NULL, 'EMARKETING_FB_PURCHASE', NULL, '2020-11-02 19:33:55', '2020-11-02 19:33:55'),
-(352, NULL, NULL, 'EMARKETING_ROUTETOKEN', '8XO4rguJ', '2020-11-02 19:33:55', '2020-11-02 19:33:55'),
+(352, NULL, NULL, 'EMARKETING_ROUTETOKEN', 'gv4gmIpQ', '2020-11-02 19:33:55', '2020-12-13 01:11:36'),
 (353, NULL, NULL, 'PSGDPR_CREATION_FORM_SWITCH', '1', '2020-11-02 19:33:55', '2020-11-02 19:33:55'),
 (354, NULL, NULL, 'PSGDPR_CREATION_FORM', NULL, '2020-11-02 19:33:55', '2020-11-02 19:33:55'),
 (355, NULL, NULL, 'PSGDPR_CUSTOMER_FORM_SWITCH', '1', '2020-11-02 19:33:55', '2020-11-02 19:33:55'),
@@ -4793,7 +4793,8 @@ INSERT INTO `ps_configuration` (`id_configuration`, `id_shop_group`, `id_shop`, 
 (437, NULL, NULL, 'PSR_HOOK_PRODUCT', '1', '2020-12-13 01:02:31', '2020-12-13 01:02:31'),
 (438, NULL, NULL, 'PSR_HOOK_CHECKOUT', '1', '2020-12-13 01:02:31', '2020-12-13 01:02:31'),
 (439, NULL, NULL, 'PSR_ICON_COLOR', '#F19D76', '2020-12-13 01:02:31', '2020-12-13 01:02:31'),
-(440, NULL, NULL, 'PSR_TEXT_COLOR', '#000000', '2020-12-13 01:02:31', '2020-12-13 01:02:31');
+(440, NULL, NULL, 'PSR_TEXT_COLOR', '#000000', '2020-12-13 01:02:31', '2020-12-13 01:02:31'),
+(441, NULL, NULL, 'PS_LAYERED_CACHE_ENABLED', '1', '2020-12-13 01:11:19', '2020-12-13 01:11:19');
 
 -- --------------------------------------------------------
 
@@ -6586,7 +6587,7 @@ INSERT INTO `ps_employee_session` (`id_employee_session`, `id_employee`, `token`
 (9, 1, 'b3304e1461ec798887b79a5bf9d1c44834d15b99'),
 (10, 1, '00b4104a6193a2d4f385870206edcb582deb390d'),
 (11, 1, '0082017e482b6c57ec215c2c44d0ed975963cb36'),
-(12, 1, 'e458ac9af2d0db4feadc96205ffd82140c91f2b7');
+(13, 1, '0db0b8b1a21cd20ac41e4c55ca52ede8b2fbe552');
 
 -- --------------------------------------------------------
 
@@ -8080,6 +8081,14 @@ CREATE TABLE `ps_layered_filter_block` (
   `data` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `ps_layered_filter_block`
+--
+
+INSERT INTO `ps_layered_filter_block` (`hash`, `data`) VALUES
+('1b30c580e31e6e42dd80ef5f117fe62f', 'a:1:{s:7:\"filters\";a:0:{}}'),
+('dcd155581b2ca0d5579f3b7f90aacf22', 'a:1:{s:7:\"filters\";a:0:{}}');
+
 -- --------------------------------------------------------
 
 --
@@ -8784,7 +8793,8 @@ INSERT INTO `ps_log` (`id_log`, `severity`, `error_code`, `message`, `object_typ
 (377, 1, 0, 'Połączenie z panelem administracyjnym z 172.24.0.1', '', 0, 1, '2020-12-13 00:05:08', '2020-12-13 00:05:08'),
 (378, 1, 0, 'Protect vendor folder in module ps_newproducts', '', 0, 1, '2020-12-13 00:08:08', '2020-12-13 00:08:08'),
 (379, 1, 0, 'Połączenie z panelem administracyjnym z 172.27.0.1', '', 0, 1, '2020-12-13 00:56:21', '2020-12-13 00:56:21'),
-(380, 3, 0, 'Data from PrestaShop Addons is invalid, and cannot fallback on cache. ', '', 0, 1, '2020-12-13 01:00:41', '2020-12-13 01:00:41');
+(380, 3, 0, 'Data from PrestaShop Addons is invalid, and cannot fallback on cache. ', '', 0, 1, '2020-12-13 01:00:41', '2020-12-13 01:00:41'),
+(381, 1, 0, 'Połączenie z panelem administracyjnym z 172.28.0.1', '', 0, 1, '2020-12-13 01:09:51', '2020-12-13 01:09:51');
 
 -- --------------------------------------------------------
 
@@ -9048,11 +9058,11 @@ CREATE TABLE `ps_module` (
 INSERT INTO `ps_module` (`id_module`, `name`, `active`, `version`) VALUES
 (1, 'contactform', 1, '4.3.0'),
 (2, 'dashactivity', 1, '2.0.2'),
-(3, 'dashtrends', 1, '2.0.2'),
+(3, 'dashtrends', 1, '2.0.3'),
 (4, 'dashgoals', 1, '2.0.2'),
-(5, 'dashproducts', 1, '2.0.4'),
+(5, 'dashproducts', 1, '2.1.1'),
 (6, 'graphnvd3', 1, '2.0.1'),
-(7, 'gridhtml', 1, '2.0.0'),
+(7, 'gridhtml', 1, '2.0.1'),
 (8, 'gsitemap', 1, '4.2.0'),
 (9, 'ps_banner', 1, '2.1.0'),
 (10, 'ps_categorytree', 1, '2.0.0'),
@@ -9066,7 +9076,7 @@ INSERT INTO `ps_module` (`id_module`, `name`, `active`, `version`) VALUES
 (19, 'ps_faviconnotificationbo', 1, '2.1.0'),
 (21, 'ps_imageslider', 1, '3.1.0'),
 (22, 'ps_languageselector', 1, '2.1.0'),
-(23, 'ps_linklist', 1, '3.1.0'),
+(23, 'ps_linklist', 1, '3.2.0'),
 (24, 'ps_mainmenu', 1, '2.2.0'),
 (25, 'ps_searchbar', 1, '2.0.1'),
 (26, 'ps_sharebuttons', 1, '2.1.0'),
@@ -9087,7 +9097,7 @@ INSERT INTO `ps_module` (`id_module`, `name`, `active`, `version`) VALUES
 (41, 'statsdata', 1, '2.1.0'),
 (42, 'statsequipment', 1, '2.0.0'),
 (43, 'statsforecast', 1, '2.0.3'),
-(44, 'statslive', 1, '2.0.2'),
+(44, 'statslive', 1, '2.1.0'),
 (45, 'statsnewsletter', 1, '2.0.2'),
 (46, 'statsorigin', 1, '2.0.2'),
 (47, 'statspersonalinfos', 1, '2.0.3'),
@@ -9096,15 +9106,15 @@ INSERT INTO `ps_module` (`id_module`, `name`, `active`, `version`) VALUES
 (50, 'statssales', 1, '2.0.0'),
 (51, 'statssearch', 1, '2.0.1'),
 (52, 'statsstock', 1, '2.0.0'),
-(53, 'statsvisits', 1, '2.0.2'),
-(54, 'welcome', 1, '6.0.0'),
+(53, 'statsvisits', 1, '2.0.3'),
+(54, 'welcome', 1, '6.0.4'),
 (55, 'gamification', 1, '2.3.2'),
-(56, 'emarketing', 1, '2.2.0'),
-(58, 'psgdpr', 1, '1.2.0'),
+(56, 'emarketing', 1, '2.2.1'),
+(58, 'psgdpr', 1, '1.2.1'),
 (59, 'ps_mbo', 1, '2.0.1'),
 (60, 'ps_buybuttonlite', 1, '1.0.1'),
 (61, 'blockreassurance', 1, '4.1.1'),
-(62, 'ps_facetedsearch', 1, '3.5.0'),
+(62, 'ps_facetedsearch', 1, '3.6.0'),
 (63, 'psaddonsconnect', 1, '2.1.1'),
 (64, 'dotpay', 1, '1.2.4.1'),
 (65, 'bluepayment', 1, '2.3.4'),
@@ -16849,7 +16859,7 @@ ALTER TABLE `ps_condition`
 -- AUTO_INCREMENT for table `ps_configuration`
 --
 ALTER TABLE `ps_configuration`
-  MODIFY `id_configuration` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=441;
+  MODIFY `id_configuration` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=442;
 
 --
 -- AUTO_INCREMENT for table `ps_configuration_kpi`
@@ -16963,7 +16973,7 @@ ALTER TABLE `ps_employee`
 -- AUTO_INCREMENT for table `ps_employee_session`
 --
 ALTER TABLE `ps_employee_session`
-  MODIFY `id_employee_session` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_employee_session` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `ps_feature`
@@ -17095,7 +17105,7 @@ ALTER TABLE `ps_link_block_shop`
 -- AUTO_INCREMENT for table `ps_log`
 --
 ALTER TABLE `ps_log`
-  MODIFY `id_log` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=381;
+  MODIFY `id_log` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=382;
 
 --
 -- AUTO_INCREMENT for table `ps_mail`

@@ -2,8 +2,8 @@
 <module>
     <name>welcome</name>
     <displayName><![CDATA[Witaj]]></displayName>
-    <version><![CDATA[6.0.0]]></version>
-    <description><![CDATA[Pomaga użytkownikowi w utworzeniu pierwszego produktu.]]></description>
+    <version><![CDATA[6.0.4]]></version>
+    <description><![CDATA[Sell your first product quicker than you would have wished with our nice onboarding process.]]></description>
     <author><![CDATA[PrestaShop]]></author>
     <tab><![CDATA[]]></tab>
     <is_configurable>0</is_configurable>
