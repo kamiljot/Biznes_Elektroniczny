@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Dec 13, 2020 at 12:31 AM
+-- Generation Time: Dec 13, 2020 at 01:10 PM
 -- Server version: 8.0.22
 -- PHP Version: 7.4.13
 
@@ -1169,7 +1169,8 @@ INSERT INTO `ps_admin_filter` (`id`, `employee`, `shop`, `controller`, `action`,
 (5, 1, 1, '', '', '{\"limit\":10,\"orderBy\":\"name\",\"sortOrder\":\"asc\",\"filters\":[]}', 'manufacturer'),
 (6, 1, 1, '', '', '{\"limit\":10,\"orderBy\":\"id_address\",\"sortOrder\":\"desc\",\"filters\":[]}', 'manufacturer_address'),
 (7, 1, 1, 'meta', 'index', '{\"limit\":50,\"orderBy\":\"id_meta\",\"sortOrder\":\"asc\",\"filters\":[]}', ''),
-(8, 1, 1, '', '', '{\"limit\":50,\"orderBy\":\"id_lang\",\"sortOrder\":\"ASC\",\"filters\":[]}', 'language');
+(8, 1, 1, '', '', '{\"limit\":50,\"orderBy\":\"id_lang\",\"sortOrder\":\"ASC\",\"filters\":[]}', 'language'),
+(9, 1, 1, 'email', 'index', '{\"limit\":50,\"orderBy\":\"id_mail\",\"sortOrder\":\"desc\",\"filters\":[]}', '');
 
 -- --------------------------------------------------------
 
@@ -1587,6 +1588,10 @@ INSERT INTO `ps_authorization_role` (`id_authorization_role`, `slug`) VALUES
 (548, 'ROLE_MOD_MODULE_PS_CUSTOMTEXT_DELETE'),
 (546, 'ROLE_MOD_MODULE_PS_CUSTOMTEXT_READ'),
 (547, 'ROLE_MOD_MODULE_PS_CUSTOMTEXT_UPDATE'),
+(833, 'ROLE_MOD_MODULE_PS_EMAILALERTS_CREATE'),
+(836, 'ROLE_MOD_MODULE_PS_EMAILALERTS_DELETE'),
+(834, 'ROLE_MOD_MODULE_PS_EMAILALERTS_READ'),
+(835, 'ROLE_MOD_MODULE_PS_EMAILALERTS_UPDATE'),
 (549, 'ROLE_MOD_MODULE_PS_EMAILSUBSCRIPTION_CREATE'),
 (552, 'ROLE_MOD_MODULE_PS_EMAILSUBSCRIPTION_DELETE'),
 (550, 'ROLE_MOD_MODULE_PS_EMAILSUBSCRIPTION_READ'),
@@ -1599,6 +1604,10 @@ INSERT INTO `ps_authorization_role` (`id_authorization_role`, `slug`) VALUES
 (560, 'ROLE_MOD_MODULE_PS_FAVICONNOTIFICATIONBO_DELETE'),
 (558, 'ROLE_MOD_MODULE_PS_FAVICONNOTIFICATIONBO_READ'),
 (559, 'ROLE_MOD_MODULE_PS_FAVICONNOTIFICATIONBO_UPDATE'),
+(841, 'ROLE_MOD_MODULE_PS_GOOGLEANALYTICS_CREATE'),
+(844, 'ROLE_MOD_MODULE_PS_GOOGLEANALYTICS_DELETE'),
+(842, 'ROLE_MOD_MODULE_PS_GOOGLEANALYTICS_READ'),
+(843, 'ROLE_MOD_MODULE_PS_GOOGLEANALYTICS_UPDATE'),
 (569, 'ROLE_MOD_MODULE_PS_IMAGESLIDER_CREATE'),
 (572, 'ROLE_MOD_MODULE_PS_IMAGESLIDER_DELETE'),
 (570, 'ROLE_MOD_MODULE_PS_IMAGESLIDER_READ'),
@@ -4245,8 +4254,8 @@ INSERT INTO `ps_condition` (`id_condition`, `id_ps_condition`, `type`, `request`
 (3, 3, 'configuration', 'PS_CSS_THEME_CACHE', '==', '1', '', 'hook', 'actionAdminPerformanceControllerSaveAfter', 0, '2020-11-07 14:24:14', '2020-11-07 14:24:14'),
 (4, 4, 'configuration', 'PS_CIPHER_ALGORITHM', '==', '1', '1', 'hook', 'actionAdminPerformanceControllerSaveAfter', 1, '2020-11-07 14:24:14', '2020-11-07 14:24:14'),
 (5, 5, 'configuration', 'PS_MEDIA_SERVERS', '==', '1', '', 'hook', 'actionAdminPerformanceControllerSaveAfter', 0, '2020-11-07 14:24:14', '2020-11-07 14:24:14'),
-(6, 6, 'sql', 'SELECT COUNT(distinct m.id_module) FROM PREFIX_hook h LEFT JOIN PREFIX_hook_module hm ON h.id_hook = hm.id_hook LEFT JOIN PREFIX_module m ON hm.id_module = m.id_module\r\nWHERE (h.name = \"displayPayment\" OR h.name = \"payment\") AND m.name NOT IN (\"bankwire\", \"cheque\", \"cashondelivery\")', '>', '0', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:14', '2020-12-13 01:28:01'),
-(7, 7, 'sql', 'SELECT COUNT(distinct m.id_module) FROM PREFIX_hook h LEFT JOIN PREFIX_hook_module hm ON h.id_hook = hm.id_hook LEFT JOIN PREFIX_module m ON hm.id_module = m.id_module\r\nWHERE (h.name = \"displayPayment\" OR h.name = \"payment\") AND m.name NOT IN (\"bankwire\", \"cheque\", \"cashondelivery\")', '>', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:14', '2020-12-13 01:28:01'),
+(6, 6, 'sql', 'SELECT COUNT(distinct m.id_module) FROM PREFIX_hook h LEFT JOIN PREFIX_hook_module hm ON h.id_hook = hm.id_hook LEFT JOIN PREFIX_module m ON hm.id_module = m.id_module\r\nWHERE (h.name = \"displayPayment\" OR h.name = \"payment\") AND m.name NOT IN (\"bankwire\", \"cheque\", \"cashondelivery\")', '>', '0', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:14', '2020-12-13 14:09:14'),
+(7, 7, 'sql', 'SELECT COUNT(distinct m.id_module) FROM PREFIX_hook h LEFT JOIN PREFIX_hook_module hm ON h.id_hook = hm.id_hook LEFT JOIN PREFIX_module m ON hm.id_module = m.id_module\r\nWHERE (h.name = \"displayPayment\" OR h.name = \"payment\") AND m.name NOT IN (\"bankwire\", \"cheque\", \"cashondelivery\")', '>', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:14', '2020-12-13 14:09:14'),
 (8, 8, 'sql', 'SELECT COUNT(*) FROM PREFIX_carrier WHERE name NOT IN (\"0\", \"My carrier\")', '>', '0', '0', 'hook', 'actionObjectCarrierAddAfter', 0, '2020-11-07 14:24:14', '2020-11-07 14:24:14'),
 (9, 9, 'sql', 'SELECT COUNT(*) FROM PREFIX_carrier WHERE name NOT IN (\"0\", \"My carrier\")', '>', '1', '0', 'hook', 'actionObjectCarrierAddAfter', 0, '2020-11-07 14:24:14', '2020-11-07 14:24:14'),
 (10, 10, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE \"demo_%\"', '>', '0', '1', 'hook', 'actionObjectProductAddAfter', 1, '2020-11-07 14:24:14', '2020-11-07 14:24:14'),
@@ -4268,7 +4277,7 @@ INSERT INTO `ps_condition` (`id_condition`, `id_ps_condition`, `type`, `request`
 (26, 26, 'sql', 'SELECT COUNT(*) FROM PREFIX_shop', '>', '4', '1', 'hook', 'actionObjectShopAddAfter', 0, '2020-11-07 14:24:14', '2020-11-07 14:24:14'),
 (27, 27, 'sql', 'SELECT COUNT(*) FROM PREFIX_shop_group', '>', '5', '1', 'hook', 'actionObjectShopGroupAddAfter 	', 0, '2020-11-07 14:24:14', '2020-11-07 14:24:14'),
 (28, 28, 'sql', 'SELECT COUNT(*) FROM PREFIX_shop_group', '>', '1', '1', 'hook', 'actionObjectShopGroupAddAfter', 0, '2020-11-07 14:24:14', '2020-11-07 14:24:14'),
-(29, 29, 'sql', 'SELECT COUNT(distinct m.id_module) FROM PREFIX_hook h LEFT JOIN PREFIX_hook_module hm ON h.id_hook = hm.id_hook LEFT JOIN PREFIX_module m ON hm.id_module = m.id_module\r\nWHERE (h.name = \"displayPayment\" OR h.name = \"payment\") AND m.name NOT IN (\"bankwire\", \"cheque\", \"cashondelivery\")', '>', '2', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:14', '2020-12-13 01:28:01'),
+(29, 29, 'sql', 'SELECT COUNT(distinct m.id_module) FROM PREFIX_hook h LEFT JOIN PREFIX_hook_module hm ON h.id_hook = hm.id_hook LEFT JOIN PREFIX_module m ON hm.id_module = m.id_module\r\nWHERE (h.name = \"displayPayment\" OR h.name = \"payment\") AND m.name NOT IN (\"bankwire\", \"cheque\", \"cashondelivery\")', '>', '2', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:14', '2020-12-13 14:09:14'),
 (30, 30, 'sql', 'SELECT COUNT(*) FROM PREFIX_carrier WHERE name NOT IN (\"0\", \"My carrier\")', '>', '2', '0', 'hook', 'actionObjectCarrierAddAfter', 0, '2020-11-07 14:24:14', '2020-11-07 14:24:14'),
 (31, 31, 'sql', 'SELECT SUM(total_paid_tax_excl / c.conversion_rate)\r\nFROM PREFIX_orders o INNER JOIN PREFIX_currency c ON c.id_currency = o.id_currency WHERE valid = 1 AND reference != \"XKBKNABJK\"', '>=', '200', '0', 'hook', 'actionOrderStatusUpdate', 0, '2020-11-07 14:24:14', '2020-11-07 14:47:58'),
 (32, 32, 'sql', ' 	SELECT SUM(total_paid_tax_excl / c.conversion_rate) FROM PREFIX_orders o INNER JOIN PREFIX_currency c ON c.id_currency = o.id_currency WHERE valid = 1 AND reference != \"XKBKNABJK\"', '>=', '2000', '0', 'hook', 'actionOrderStatusUpdate', 0, '2020-11-07 14:24:14', '2020-11-07 14:47:58'),
@@ -4343,8 +4352,8 @@ INSERT INTO `ps_condition` (`id_condition`, `id_ps_condition`, `type`, `request`
 (101, 113, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o INNER JOIN PREFIX_address a ON a.id_address = o.id_address_delivery\r\nWHERE reference NOT IN (\"XKBKNABJK\", \"OHSATSERP\", \"FFATNOMMJ\", \"UOYEVOLI\", \"KHWLILZLL\") AND a.id_country != \"{config}PS_COUNTRY_DEFAULT{/config}\"', '>=', '1000', '0', 'hook', 'actionOrderStatusUpdate', 0, '2020-11-07 14:24:15', '2020-11-07 14:47:58'),
 (102, 114, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o INNER JOIN PREFIX_address a ON a.id_address = o.id_address_delivery\r\nWHERE reference NOT IN (\"XKBKNABJK\", \"OHSATSERP\", \"FFATNOMMJ\", \"UOYEVOLI\", \"KHWLILZLL\") AND a.id_country != \"{config}PS_COUNTRY_DEFAULT{/config}\"', '>=', '5000', '0', 'hook', 'actionOrderStatusUpdate', 0, '2020-11-07 14:24:15', '2020-11-07 14:47:58'),
 (103, 132, 'sql', 'SELECT count(id_configuration) FROM PREFIX_configuration WHERE `name` = \'PS_SHOP_DOMAIN\' AND value IN (\'127.0.0.1\', \'localhost\' )', '==', '1', '', 'time', '1', 0, '2020-11-07 14:24:15', '2020-11-07 14:24:15'),
-(104, 136, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%ebay%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
-(105, 140, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%moneybookers%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(104, 136, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%ebay%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:14'),
+(105, 140, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%moneybookers%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:14'),
 (106, 142, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%paypal%\"', '>=', '1', '', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-11-07 14:24:15'),
 (107, 158, 'install', '', '>=', '90', '', 'time', '2', 0, '2020-11-07 14:24:15', '2020-11-07 14:24:15'),
 (108, 159, 'install', '', '<=', '90', '', 'time', '2', 0, '2020-11-07 14:24:15', '2020-11-07 14:24:15'),
@@ -4360,9 +4369,9 @@ INSERT INTO `ps_condition` (`id_condition`, `id_ps_condition`, `type`, `request`
 (118, 174, 'sql', 'SELECT COUNT(*) FROM PREFIX_webservice_account', '>=', '4', '0', 'hook', 'actionAdminWebserviceControllerSaveAfter', 0, '2020-11-07 14:24:15', '2020-11-07 14:24:15'),
 (119, 175, 'sql', 'SELECT count(*) FROM	 PREFIX_configuration WHERE name = \'PS_HOSTED_MODE\'', '==', '0', '', 'time', '1', 0, '2020-11-07 14:24:15', '2020-11-07 14:24:15'),
 (120, 209, 'configuration', 'EBAY_CONFIGURATION_OK', '==', '1', '', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
-(121, 320, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%shopgate%\" ', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(121, 320, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%shopgate%\" ', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:14'),
 (122, 322, 'configuration', 'SHOPGATE_CONFIGURATION_OK', '==', '1', '', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
-(123, 323, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%shoppingfluxexport%\" ', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(123, 323, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%shoppingfluxexport%\" ', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:14'),
 (124, 324, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%shoppingfluxexport%\" ', '==', '0', '', 'time', '1', 0, '2020-11-07 14:24:15', '2020-11-07 14:24:15'),
 (125, 325, 'sql', 'SELECT COUNT(*) FROM PREFIX_configuration WHERE name LIKE \'SHOPPINGFLUXEXPORT_CONFIGURATION_OK\' OR name LIKE \'SHOPPINGFLUXEXPORT_CONFIGURED\'', '>=', '1', '0', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
 (126, 326, 'sql', 'SELECT COUNT(*) FROM PREFIX_configuration WHERE (( name LIKE \'MONEYBOOKERS_CONFIGURATION_OK\') AND ( value = \'1\')) OR (( name LIKE \'MB_PAY_TO_EMAIL \') AND ( value != \'testaccount2@moneybookers.com \'))', '==', '2', '0', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
@@ -4373,11 +4382,11 @@ INSERT INTO `ps_condition` (`id_condition`, `id_ps_condition`, `type`, `request`
 (131, 377, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%moneybookers%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '1', '0', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
 (132, 394, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%sofortbanking%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '30', '0', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
 (133, 399, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE \"demo_%\"', '>', '499', '', 'hook', 'actionObjectProductAddAfter', 0, '2020-11-07 14:24:15', '2020-11-07 14:24:15'),
-(134, 424, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%alliance3%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(134, 424, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%alliance3%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:14'),
 (135, 425, 'sql', 'SELECT COUNT(*) FROM PREFIX_configuration WHERE (( name LIKE \'ALLIANCE3_CONFIGURATION_OK\') AND ( value = \'1\')) OR (( name LIKE \'ALLIANCE_DEMO\') AND ( value = \'0\'))', '==', '2', '0', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
 (136, 426, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%alliance3%\" AND os.logable = 1', '>=', '1', '0', 'time', '2', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
 (137, 427, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%alliance3%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '30', '0', 'time', '7', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
-(138, 428, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%authorizeaim%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(138, 428, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%authorizeaim%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:14'),
 (139, 429, 'configuration', 'SELECT COUNT(*) FROM PREFIX_configuration WHERE (( name LIKE \'AUTHORIZEAIM_CONFIGURATION_OK\') AND ( value = \'1\')) OR (( name LIKE \'AUTHORIZE_AIM_SANDBOX\') AND ( value = \'0\'))', '==', '2', '', 'time', '2', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
 (140, 430, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%authorizeaim%\" AND os.logable = 1', '>=', '1', '0', 'time', '2', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
 (141, 431, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%authorizeaim%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '30', '0', 'time', '7', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
@@ -4385,102 +4394,102 @@ INSERT INTO `ps_condition` (`id_condition`, `id_ps_condition`, `type`, `request`
 (143, 435, 'configuration', 'BLUEPAY_CONFIGURATION_OK', '==', '1', '', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
 (144, 436, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%bluepay%\" AND os.logable = 1', '>=', '1', '0', 'time', '2', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
 (145, 437, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%bluepay%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '30', '0', 'time', '7', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
-(146, 438, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%payplug%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(146, 438, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%payplug%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:14'),
 (147, 439, 'configuration', 'PAYPLUG_CONFIGURATION_OK', '==', '1', '', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
 (148, 440, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%payplug%\" AND os.logable = 1', '>=', '1', '0', 'time', '2', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
 (149, 441, 'sql', 'SELECT SUM(o.total_paid) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%payplug%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '10000', '0', 'time', '7', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
-(150, 442, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%affinityitems%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(150, 442, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%affinityitems%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:14'),
 (151, 443, 'sql', 'SELECT COUNT(*) FROM PREFIX_configuration WHERE name LIKE \'AFFINITYITEMS_CONFIGURATION_OK\' AND value = \'1\'', '==', '1', '0', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
-(152, 446, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%dpdpoland%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(152, 446, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%dpdpoland%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:14'),
 (153, 447, 'configuration', 'DPDPOLAND_CONFIGURATION_OK', '==', '1', '', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
 (154, 448, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state LEFT JOIN PREFIX_carrier c ON c.id_carrier = o.id_carrier WHERE c.name like \"%dpdpoland%\" AND os.logable = 1', '>=', '1', '0', 'time', '2', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
 (155, 449, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state LEFT JOIN PREFIX_carrier c ON c.id_carrier = o.id_carrier WHERE c.name like \"%dpdpoland%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '100', '0', 'time', '7', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
-(156, 450, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%envoimoinscher%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(156, 450, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%envoimoinscher%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:14'),
 (157, 451, 'sql', 'SELECT COUNT(*) FROM PREFIX_configuration WHERE (( name LIKE \'ENVOIMOINSCHER_CONFIGURATION_OK\') AND ( value = \'1\')) OR (( name LIKE \'EMC_ENV \') AND ( value != \'TEST\'))', '==', '2', '0', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
 (158, 452, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state LEFT JOIN PREFIX_carrier c ON c.id_carrier = o.id_carrier WHERE c.name like \"%envoimoinscher%\" AND os.logable = 1', '>=', '1', '0', 'time', '2', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
 (159, 453, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state LEFT JOIN PREFIX_carrier c ON c.id_carrier = o.id_carrier WHERE c.name like \"%envoimoinscher%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '100', '0', 'time', '7', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
-(160, 454, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%klikandpay%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(160, 454, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%klikandpay%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:14'),
 (161, 455, 'configuration', 'KLIKANDPAY_CONFIGURATION_OK', '==', '1', '', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
 (162, 456, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%klikandpay%\" AND os.logable = 1', '>=', '1', '0', 'time', '2', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
 (163, 457, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%klikandpay%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '30', '0', 'time', '7', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
-(164, 458, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%clickline%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(164, 458, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%clickline%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:14'),
 (165, 459, 'configuration', 'CLICKLINE_CONFIGURATION_OK', '==', '1', '', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
 (166, 460, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state LEFT JOIN PREFIX_carrier c ON c.id_carrier = o.id_carrier WHERE c.name like \"%clickline%\" AND os.logable = 1', '>=', '1', '0', 'time', '2', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
 (167, 461, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state LEFT JOIN PREFIX_carrier c ON c.id_carrier = o.id_carrier WHERE c.name like \"%clickline%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '100', '0', 'time', '7', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
-(168, 462, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%cdiscount%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(168, 462, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%cdiscount%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:14'),
 (169, 463, 'sql', 'SELECT 1', '!=', '1', '1', 'time', '100', 0, '2020-11-07 14:24:15', '2020-11-07 14:24:15'),
 (170, 464, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%cdiscount%\" AND os.logable = 1', '>=', '1', '0', 'time', '2', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:26'),
 (171, 465, 'sql', 'SELECT SUM(o.total_paid) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%cdiscount%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 365 DAY)', '>=', '500', '0', 'time', '7', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:27'),
-(172, 467, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%erpillicopresta%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(172, 467, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%erpillicopresta%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:14'),
 (173, 468, 'configuration', 'SELECT COUNT(*) FROM PREFIX_configuration WHERE (( name LIKE \'ERPILLICOPRESTA_CONFIGURATION_OK\') AND ( value = \'1\')) OR (( name LIKE \'ERP_LICENCE_VALIDITY \') AND ( value == \'1\')) OR (( name LIKE \'ERP_MONTH_FREE_ACTIVE \') AND ( value == \'0\'))', '==', '3', '', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:27'),
 (174, 469, 'sql', 'SELECT 1', '!=', '1', '1', 'time', '100', 0, '2020-11-07 14:24:15', '2020-11-07 14:24:15'),
 (175, 470, 'sql', 'SELECT 1', '!=', '1', '1', 'time', '100', 0, '2020-11-07 14:24:15', '2020-11-07 14:24:15'),
-(176, 471, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%netreviews%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(176, 471, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%netreviews%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:14'),
 (177, 472, 'sql', 'SELECT COUNT(*) FROM PREFIX_configuration WHERE (( name LIKE \'NETREVIEWS_CONFIGURATION_OK\') AND ( value = \'1\')) OR (( name LIKE \'AVISVERIFIES_URLCERTIFICAT \') AND ( value IS NOT LIKE \'%preprod%\'))', '==', '2', '0', 'time', '1', 0, '2020-11-07 14:24:15', '2020-11-07 14:24:15'),
 (178, 473, 'sql', 'SELECT 1', '!=', '1', '1', 'time', '100', 0, '2020-11-07 14:24:15', '2020-11-07 14:24:15'),
 (179, 474, 'sql', 'SELECT 1', '!=', '1', '1', 'time', '100', 0, '2020-11-07 14:24:15', '2020-11-07 14:24:15'),
-(180, 475, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%bluesnap%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(180, 475, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%bluesnap%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:14'),
 (181, 476, 'sql', 'SELECT COUNT(*) FROM PREFIX_configuration WHERE (( name LIKE \'BLUESNAP_CONFIGURATION_OK\') AND ( value = \'1\')) OR (( name LIKE \'BLUESNAP_SANDBOX \') AND ( value NOT LIKE \'%sandbox%\'))', '==', '2', '0', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:27'),
 (182, 477, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%bluesnap%\" AND os.logable = 1', '>=', '1', '0', 'time', '2', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:27'),
 (183, 478, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%bluesnap%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '30', '0', 'time', '7', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:27'),
-(184, 479, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%desjardins%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(184, 479, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%desjardins%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:14'),
 (185, 480, 'sql', 'SELECT COUNT(*) FROM PREFIX_configuration WHERE (( name LIKE \'DESJARDINS_CONFIGURATION_OK\') AND ( value = \'1\')) OR (( name LIKE \'DESJARDINS_MODE \') AND ( value NOT LIKE \'%test%\'))', '==', '2', '0', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:27'),
 (186, 481, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%desjardins%\" AND os.logable = 1', '>=', '1', '0', 'time', '2', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:27'),
 (187, 482, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%desjardins%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '30', '0', 'time', '7', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:27'),
-(188, 483, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%firstdata%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(188, 483, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%firstdata%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:15'),
 (189, 484, 'configuration', 'FIRSTDATA_CONFIGURATION_OK', '==', '1', '', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:27'),
 (190, 485, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%firstdata%\" AND os.logable = 1', '>=', '1', '0', 'time', '2', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:27'),
 (191, 486, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%firstdata%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '30', '0', 'time', '7', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:27'),
-(192, 487, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%giveit%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(192, 487, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%giveit%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:15'),
 (193, 488, 'sql', 'GIVEIT_CONFIGURATION_OK', '>=', '1', '0', 'time', '1', 0, '2020-11-07 14:24:15', '2020-11-07 14:24:15'),
 (194, 489, 'sql', 'SELECT 1', '!=', '1', '1', 'time', '365', 0, '2020-11-07 14:24:15', '2020-11-07 14:24:15'),
 (195, 490, 'sql', 'SELECT 1', '!=', '1', '1', 'time', '365', 0, '2020-11-07 14:24:15', '2020-11-07 14:24:15'),
-(196, 491, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%ganalytics%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(196, 491, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%ganalytics%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:15'),
 (197, 492, 'configuration', 'GANALYTICS_CONFIGURATION_OK', '==', '1', '', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:27'),
 (198, 493, 'sql', 'SELECT 1', '!=', '1', '1', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:27'),
 (199, 494, 'sql', 'SELECT 1', '!=', '1', '1', 'time', '365', 0, '2020-11-07 14:24:15', '2020-11-07 14:24:15'),
-(200, 496, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%pagseguro%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(200, 496, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%pagseguro%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:15'),
 (201, 497, 'configuration', 'PAGSEGURO_CONFIGURATION_OK', '==', '1', '', 'time', '1', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:27'),
 (202, 498, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%pagseguro%\" AND os.logable = 1', '>=', '1', '0', 'time', '2', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:27'),
 (203, 499, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%pagseguro%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '30', '0', 'time', '7', 0, '2020-11-07 14:24:15', '2020-12-13 00:56:27'),
-(204, 500, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%paypalmx%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 01:28:01'),
+(204, 500, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%paypalmx%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:15', '2020-12-13 14:09:15'),
 (205, 501, 'sql', 'SELECT COUNT(*) FROM PREFIX_configuration WHERE (( name LIKE \'PAYPALMX_CONFIGURATION_OK\') AND ( value = \'1\')) OR (( name LIKE \'PAYPAL_MX_SANDBOX\') AND ( value = \'0\'))', '==', '2', '0', 'time', '1', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
 (206, 502, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%paypalmx%\" AND os.logable = 1', '>=', '1', '0', 'time', '2', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
 (207, 503, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%paypalmx%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '30', '0', 'time', '7', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
-(208, 505, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%paypalusa%\"', '==', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:16', '2020-12-13 01:28:01'),
+(208, 505, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%paypalusa%\"', '==', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:16', '2020-12-13 14:09:15'),
 (209, 506, 'sql', 'SELECT COUNT(*) FROM PREFIX_configuration WHERE (( name LIKE \'PAYPALUSA_CONFIGURATION_OK\') AND ( value = \'1\')) OR (( name LIKE \'PAYPAL_USA_SANDBOX\') AND ( value = \'0\'))', '==', '2', '0', 'time', '1', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
 (210, 507, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%paypalusa%\" AND os.logable = 1', '>=', '1', '0', 'time', '2', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27');
 INSERT INTO `ps_condition` (`id_condition`, `id_ps_condition`, `type`, `request`, `operator`, `value`, `result`, `calculation_type`, `calculation_detail`, `validated`, `date_add`, `date_upd`) VALUES
 (211, 508, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%paypalmx%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '30', '0', 'time', '7', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
-(212, 509, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%payulatam%\"', '==', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:16', '2020-12-13 01:28:01'),
+(212, 509, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%payulatam%\"', '==', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:16', '2020-12-13 14:09:15'),
 (213, 510, 'sql', 'SELECT COUNT(*) FROM PREFIX_configuration WHERE (( name LIKE \'PAYULATAM_CONFIGURATION_OK\') AND ( value = \'1\')) OR (( name LIKE \'PAYU_LATAM_TEST\') AND ( value = \'1\'))', '==', '2', '0', 'time', '1', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
 (214, 511, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%payulatam%\" AND os.logable = 1', '>=', '1', '0', 'time', '2', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
 (215, 512, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%payulatam%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '30', '0', 'time', '7', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
-(216, 513, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%prestastats%\"', '==', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:16', '2020-12-13 01:28:01'),
+(216, 513, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%prestastats%\"', '==', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:16', '2020-12-13 14:09:15'),
 (217, 514, 'configuration', 'PRESTASTATS_CONFIGURATION_OK', '==', '1', '', 'time', '1', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
 (218, 515, 'sql', 'SELECT 1', '!=', '1', '1', 'time', '365', 0, '2020-11-07 14:24:16', '2020-11-07 14:24:16'),
 (219, 516, 'sql', 'SELECT 1', '!=', '1', '1', 'time', '365', 0, '2020-11-07 14:24:16', '2020-11-07 14:24:16'),
-(220, 517, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%riskified%\"', '==', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:16', '2020-12-13 01:28:01'),
+(220, 517, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%riskified%\"', '==', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:16', '2020-12-13 14:09:15'),
 (221, 518, 'sql', 'SELECT COUNT(*) FROM PREFIX_configuration WHERE (( name LIKE \'RISKIFIED_CONFIGURATION_OK\') AND ( value = \'1\')) OR (( name LIKE \'RISKIFIED_MODE\') AND ( value = \'1\'))', '==', '2', '0', 'time', '1', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
 (222, 519, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%riskified%\" AND os.logable = 1', '>=', '1', '0', 'time', '2', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
 (223, 520, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%riskified%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '30', '0', 'time', '7', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
-(224, 521, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%simplifycommerce%\"', '==', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:16', '2020-12-13 01:28:01'),
+(224, 521, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%simplifycommerce%\"', '==', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:16', '2020-12-13 14:09:15'),
 (225, 522, 'sql', 'SELECT COUNT(*) FROM PREFIX_configuration WHERE (( name LIKE \'SIMPLIFY_CONFIGURATION_OK\') AND ( value = \'1\')) OR (( name LIKE \'SIMPLIFY_MODE\') AND ( value = \'1\'))', '==', '2', '0', 'time', '1', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
 (226, 523, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%simplifycommerce%\" AND os.logable = 1', '>=', '1', '0', 'time', '2', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
 (227, 524, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%simplifycommerce%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '30', '0', 'time', '7', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
-(228, 525, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%vtpayment%\"', '==', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:16', '2020-12-13 01:28:01'),
+(228, 525, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%vtpayment%\"', '==', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:16', '2020-12-13 14:09:15'),
 (229, 526, 'configuration', 'VTPAYMENT_CONFIGURATION_OK', '==', '1', '', 'time', '1', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
 (230, 527, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%vtpayment%\" AND os.logable = 1', '>=', '1', '0', 'time', '2', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
 (231, 528, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%vtpayment%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '30', '0', 'time', '7', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
-(232, 529, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%yotpo%\"', '==', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:16', '2020-12-13 01:28:01'),
+(232, 529, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%yotpo%\"', '==', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:16', '2020-12-13 14:09:15'),
 (233, 530, 'configuration', 'YOTPO_CONFIGURATION_OK', '==', '1', '', 'time', '1', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
 (234, 531, 'sql', 'SELECT 1', '!=', '1', '1', 'time', '365', 0, '2020-11-07 14:24:16', '2020-11-07 14:24:16'),
 (235, 532, 'sql', 'SELECT 1', '!=', '1', '1', 'time', '365', 0, '2020-11-07 14:24:16', '2020-11-07 14:24:16'),
-(236, 533, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%yotpo%\"', '==', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:16', '2020-12-13 01:28:02'),
+(236, 533, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%yotpo%\"', '==', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:16', '2020-12-13 14:09:15'),
 (237, 534, 'sql', 'SELECT COUNT(*) FROM PREFIX_configuration WHERE (( name LIKE \'YOUSTICERESOLUTIONSYSTEM_CONF_OK\') AND ( value = \'1\')) OR (( name LIKE \'YRS_SANDBOX\') AND ( value = \'0\'))', '==', '2', '0', 'time', '1', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
 (238, 535, 'sql', 'SELECT 1', '!=', '1', '1', 'time', '365', 0, '2020-11-07 14:24:16', '2020-11-07 14:24:16'),
 (239, 536, 'sql', 'SELECT 1', '!=', '1', '1', 'time', '365', 0, '2020-11-07 14:24:16', '2020-11-07 14:24:16'),
-(240, 537, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%loyaltylion%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:16', '2020-12-13 01:28:02'),
+(240, 537, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%loyaltylion%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2020-11-07 14:24:16', '2020-12-13 14:09:15'),
 (241, 538, 'configuration', 'LOYALTYLION_CONFIGURATION_OK', '==', '1', '', 'time', '1', 0, '2020-11-07 14:24:16', '2020-12-13 00:56:27'),
 (242, 539, 'sql', 'SELECT 1', '!=', '1', '1', 'time', '365', 0, '2020-11-07 14:24:16', '2020-11-07 14:24:16'),
 (243, 540, 'sql', 'SELECT 1', '!=', '1', '1', 'time', '365', 0, '2020-11-07 14:24:16', '2020-11-07 14:24:16'),
@@ -5040,7 +5049,7 @@ INSERT INTO `ps_configuration` (`id_configuration`, `id_shop_group`, `id_shop`, 
 (230, NULL, NULL, 'PS_SHOP_DOMAIN_SSL', 'localhost/Biznes_Elektroniczny', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (231, NULL, NULL, 'PS_SHOP_NAME', 'Chwytliwa nazwa', '0000-00-00 00:00:00', '2020-11-02 19:32:44'),
 (232, NULL, NULL, 'PS_SHOP_EMAIL', 'piotru92@gmail.com', '0000-00-00 00:00:00', '2020-11-02 19:32:49'),
-(233, NULL, NULL, 'PS_MAIL_METHOD', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(233, NULL, NULL, 'PS_MAIL_METHOD', '2', '0000-00-00 00:00:00', '2020-12-13 14:01:05'),
 (234, NULL, NULL, 'PS_SHOP_ACTIVITY', '20', '0000-00-00 00:00:00', '2020-11-02 19:32:44'),
 (235, NULL, NULL, 'PS_LOGO', 'chwytliwa-nazwa-logo-1604745491.jpg', '0000-00-00 00:00:00', '2020-11-07 11:38:11'),
 (236, NULL, NULL, 'PS_FAVICON', 'favicon.ico', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -5048,11 +5057,11 @@ INSERT INTO `ps_configuration` (`id_configuration`, `id_shop_group`, `id_shop`, 
 (238, NULL, NULL, 'PS_ROOT_CATEGORY', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (239, NULL, NULL, 'PS_HOME_CATEGORY', '2', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (240, NULL, NULL, 'PS_CONFIGURATION_AGREMENT', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(241, NULL, NULL, 'PS_MAIL_SERVER', 'smtp.', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(242, NULL, NULL, 'PS_MAIL_USER', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(243, NULL, NULL, 'PS_MAIL_PASSWD', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(244, NULL, NULL, 'PS_MAIL_SMTP_ENCRYPTION', 'off', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(245, NULL, NULL, 'PS_MAIL_SMTP_PORT', '25', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(241, NULL, NULL, 'PS_MAIL_SERVER', 'smtp.gmail.com', '0000-00-00 00:00:00', '2020-12-13 14:01:05'),
+(242, NULL, NULL, 'PS_MAIL_USER', 'naibofdesert@gmail.com', '0000-00-00 00:00:00', '2020-12-13 14:01:05'),
+(243, NULL, NULL, 'PS_MAIL_PASSWD', 'arturtryc', '0000-00-00 00:00:00', '2020-12-13 14:01:05'),
+(244, NULL, NULL, 'PS_MAIL_SMTP_ENCRYPTION', 'ssl', '0000-00-00 00:00:00', '2020-12-13 14:01:05'),
+(245, NULL, NULL, 'PS_MAIL_SMTP_PORT', '465', '0000-00-00 00:00:00', '2020-12-13 14:01:05'),
 (246, NULL, NULL, 'PS_MAIL_COLOR', '#db3484', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (247, NULL, NULL, 'NW_SALT', 'Oq0MAMWxyb726qAD', '0000-00-00 00:00:00', '2020-11-02 19:32:53'),
 (248, NULL, NULL, 'PS_PAYMENT_LOGO_CMS_ID', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -5074,7 +5083,7 @@ INSERT INTO `ps_configuration` (`id_configuration`, `id_shop_group`, `id_shop`, 
 (264, NULL, NULL, 'PS_DETECT_COUNTRY', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (265, NULL, NULL, 'PS_ROUND_TYPE', '2', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (266, NULL, NULL, 'PS_PRICE_DISPLAY_PRECISION', '2', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(267, NULL, NULL, 'PS_LOG_EMAILS', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(267, NULL, NULL, 'PS_LOG_EMAILS', '1', '0000-00-00 00:00:00', '2020-12-13 14:01:05'),
 (268, NULL, NULL, 'PS_CUSTOMER_OPTIN', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (269, NULL, NULL, 'PS_CUSTOMER_BIRTHDATE', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (270, NULL, NULL, 'PS_PACK_STOCK_TYPE', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -5241,7 +5250,20 @@ INSERT INTO `ps_configuration` (`id_configuration`, `id_shop_group`, `id_shop`, 
 (439, NULL, NULL, 'PSR_ICON_COLOR', '#F19D76', '2020-12-13 01:02:31', '2020-12-13 01:02:31'),
 (440, NULL, NULL, 'PSR_TEXT_COLOR', '#000000', '2020-12-13 01:02:31', '2020-12-13 01:02:31'),
 (441, NULL, NULL, 'PS_LAYERED_CACHE_ENABLED', '1', '2020-12-13 01:11:19', '2020-12-13 01:11:19'),
-(443, NULL, NULL, 'MOD_BLOCKTOPMENU_ITEMS', 'CAT2,CAT14,CAT15,CAT19,CAT17', '2020-12-13 01:28:02', '2020-12-13 01:30:25');
+(443, NULL, NULL, 'MOD_BLOCKTOPMENU_ITEMS', 'CAT2,CAT14,CAT15,CAT19,CAT17', '2020-12-13 01:28:02', '2020-12-13 01:30:25'),
+(444, NULL, NULL, 'PS_MAIL_EMAIL_MESSAGE', '2', '2020-12-13 14:01:05', '2020-12-13 14:01:05'),
+(445, NULL, NULL, 'PS_MAIL_DOMAIN', 'gmail.com', '2020-12-13 14:01:05', '2020-12-13 14:01:05'),
+(446, NULL, NULL, 'MA_MERCHANT_ORDER', '1', '2020-12-13 14:03:48', '2020-12-13 14:03:48'),
+(447, NULL, NULL, 'MA_MERCHANT_OOS', '1', '2020-12-13 14:03:48', '2020-12-13 14:03:48'),
+(448, NULL, NULL, 'MA_CUSTOMER_QTY', '1', '2020-12-13 14:03:48', '2020-12-13 14:03:48'),
+(449, NULL, NULL, 'MA_ORDER_EDIT', '1', '2020-12-13 14:03:48', '2020-12-13 14:03:48'),
+(450, NULL, NULL, 'MA_RETURN_SLIP', '1', '2020-12-13 14:03:48', '2020-12-13 14:03:48'),
+(451, NULL, NULL, 'MA_MERCHANT_MAILS', 'piotru92@gmail.com', '2020-12-13 14:03:48', '2020-12-13 14:03:48'),
+(452, NULL, NULL, 'MA_LAST_QTIES', '3', '2020-12-13 14:03:48', '2020-12-13 14:03:48'),
+(453, NULL, NULL, 'MA_MERCHANT_COVERAGE', '0', '2020-12-13 14:03:48', '2020-12-13 14:03:48'),
+(454, NULL, NULL, 'MA_PRODUCT_COVERAGE', '0', '2020-12-13 14:03:48', '2020-12-13 14:03:48'),
+(455, NULL, NULL, 'GA_ACCOUNT_ID', 'UAXYZAA', '2020-12-13 14:06:13', '2020-12-13 14:06:13'),
+(456, NULL, NULL, 'GANALYTICS_CONFIGURATION_OK', '1', '2020-12-13 14:06:13', '2020-12-13 14:09:35');
 
 -- --------------------------------------------------------
 
@@ -5462,7 +5484,8 @@ INSERT INTO `ps_connections` (`id_connections`, `id_shop_group`, `id_shop`, `id_
 (43, 1, 1, 39, 1, 0, '2020-11-07 15:18:28', ''),
 (44, 1, 1, 40, 1, 0, '2020-11-07 15:19:52', ''),
 (45, 1, 1, 42, 1, 2887254017, '2020-12-13 00:04:53', ''),
-(46, 1, 1, 42, 1, 2887450625, '2020-12-13 00:54:49', '');
+(46, 1, 1, 42, 1, 2887450625, '2020-12-13 00:54:49', ''),
+(47, 1, 1, 31, 1, 2886926337, '2020-12-13 13:58:30', '');
 
 -- --------------------------------------------------------
 
@@ -7036,7 +7059,8 @@ INSERT INTO `ps_employee_session` (`id_employee_session`, `id_employee`, `token`
 (9, 1, 'b3304e1461ec798887b79a5bf9d1c44834d15b99'),
 (10, 1, '00b4104a6193a2d4f385870206edcb582deb390d'),
 (11, 1, '0082017e482b6c57ec215c2c44d0ed975963cb36'),
-(13, 1, '0db0b8b1a21cd20ac41e4c55ca52ede8b2fbe552');
+(13, 1, '0db0b8b1a21cd20ac41e4c55ca52ede8b2fbe552'),
+(14, 1, 'a6cedbd815e70057c08b23703c084cf5c6ab4ddb');
 
 -- --------------------------------------------------------
 
@@ -7124,6 +7148,33 @@ CREATE TABLE `ps_feature_value_lang` (
   `id_feature_value` int UNSIGNED NOT NULL,
   `id_lang` int UNSIGNED NOT NULL,
   `value` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ps_ganalytics`
+--
+
+CREATE TABLE `ps_ganalytics` (
+  `id_google_analytics` int NOT NULL,
+  `id_order` int NOT NULL,
+  `id_customer` int NOT NULL,
+  `id_shop` int NOT NULL,
+  `sent` tinyint(1) DEFAULT NULL,
+  `date_add` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ps_ganalytics_data`
+--
+
+CREATE TABLE `ps_ganalytics_data` (
+  `id_cart` int NOT NULL,
+  `id_shop` int NOT NULL,
+  `data` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7875,7 +7926,8 @@ INSERT INTO `ps_hook` (`id_hook`, `name`, `title`, `description`, `position`) VA
 (462, 'actionObjectCartRuleAddAfter', 'actionObjectCartRuleAddAfter', '', 1),
 (463, 'actionAdminStoresControllerSaveAfter', 'actionAdminStoresControllerSaveAfter', '', 1),
 (464, 'actionAdminWebserviceControllerSaveAfter', 'actionAdminWebserviceControllerSaveAfter', '', 1),
-(465, 'displayFooterAfter', 'displayFooterAfter', '', 1);
+(465, 'displayFooterAfter', 'displayFooterAfter', '', 1),
+(466, 'actionProductCoverage', 'actionProductCoverage', '', 1);
 
 -- --------------------------------------------------------
 
@@ -8112,6 +8164,19 @@ INSERT INTO `ps_hook_module` (`id_module`, `id_shop`, `id_hook`, `position`) VAL
 (69, 1, 440, 1),
 (69, 1, 441, 1),
 (69, 1, 442, 1),
+(70, 1, 6, 1),
+(70, 1, 51, 1),
+(70, 1, 58, 1),
+(70, 1, 59, 1),
+(70, 1, 69, 1),
+(70, 1, 99, 1),
+(70, 1, 108, 1),
+(70, 1, 466, 1),
+(72, 1, 15, 1),
+(72, 1, 27, 1),
+(72, 1, 40, 1),
+(72, 1, 56, 1),
+(72, 1, 70, 1),
 (2, 1, 395, 2),
 (3, 1, 396, 2),
 (3, 1, 402, 2),
@@ -8143,6 +8208,11 @@ INSERT INTO `ps_hook_module` (`id_module`, `id_shop`, `id_hook`, `position`) VAL
 (69, 1, 76, 2),
 (69, 1, 434, 2),
 (69, 1, 443, 2),
+(70, 1, 1, 2),
+(70, 1, 24, 2),
+(70, 1, 52, 2),
+(70, 1, 419, 2),
+(72, 1, 30, 2),
 (4, 1, 396, 3),
 (4, 1, 402, 3),
 (5, 1, 403, 3),
@@ -8159,6 +8229,8 @@ INSERT INTO `ps_hook_module` (`id_module`, `id_shop`, `id_hook`, `position`) VAL
 (64, 1, 407, 3),
 (65, 1, 5, 3),
 (69, 1, 413, 3),
+(70, 1, 43, 3),
+(70, 1, 418, 3),
 (5, 1, 396, 4),
 (6, 1, 402, 4),
 (27, 1, 448, 4),
@@ -8167,16 +8239,22 @@ INSERT INTO `ps_hook_module` (`id_module`, `id_shop`, `id_hook`, `position`) VAL
 (56, 1, 65, 4),
 (65, 1, 407, 4),
 (67, 1, 13, 4),
+(70, 1, 394, 4),
+(72, 1, 35, 4),
 (35, 1, 49, 5),
 (55, 1, 402, 5),
 (64, 1, 14, 5),
 (64, 1, 65, 5),
+(72, 1, 13, 5),
 (36, 1, 49, 6),
 (58, 1, 402, 6),
 (65, 1, 14, 6),
+(72, 1, 65, 6),
 (37, 1, 49, 7),
 (59, 1, 402, 7),
+(70, 1, 14, 7),
 (38, 1, 49, 8),
+(72, 1, 14, 8),
 (39, 1, 49, 9),
 (40, 1, 49, 10),
 (42, 1, 49, 11),
@@ -11250,7 +11328,13 @@ INSERT INTO `ps_log` (`id_log`, `severity`, `error_code`, `message`, `object_typ
 (380, 3, 0, 'Data from PrestaShop Addons is invalid, and cannot fallback on cache. ', '', 0, 1, '2020-12-13 01:00:41', '2020-12-13 01:00:41'),
 (381, 1, 0, 'Połączenie z panelem administracyjnym z 172.28.0.1', '', 0, 1, '2020-12-13 01:09:51', '2020-12-13 01:09:51'),
 (382, 1, 0, 'Product modification', 'Product', 22, 1, '2020-12-13 01:22:28', '2020-12-13 01:22:28'),
-(383, 1, 0, 'Product modification', 'Product', 23, 1, '2020-12-13 01:22:57', '2020-12-13 01:22:57');
+(383, 1, 0, 'Product modification', 'Product', 23, 1, '2020-12-13 01:22:57', '2020-12-13 01:22:57'),
+(384, 1, 0, 'Połączenie z panelem administracyjnym z 172.19.0.1', '', 0, 1, '2020-12-13 13:59:35', '2020-12-13 13:59:35'),
+(385, 3, 0, 'Wyjątek wyrzucany przez moduł ps_emailalerts podczas install. Failed to copy \\\"/var/www/html/Biznes_Elektroniczny/var/cache/dev/sandbox/5fd610f65c3e6/ps_emailalerts/mails/en/order_changed.txt\\\" to \\\"/var/www/html/Biznes_Elektroniczny/modules/ps_emailalerts/mails/en/order_changed.txt\\\" because target file could not be opened for writing.', '', 0, 1, '2020-12-13 14:02:46', '2020-12-13 14:02:46'),
+(386, 3, 0, 'Wyjątek wyrzucany przez moduł ps_emailalerts podczas install. Got error 168 - \\\'Unknown (generic) error from engine\\\' from storage engineCREATE TABLE IF NOT EXISTS `ps_mailalert_customer_oos`\\n				(\\n					`id_customer` int(10) unsigned NOT NULL,\\n					`customer_email` varchar(128) NOT NULL,\\n					`id_product` int(10) unsigned NOT NULL,\\n					`id_product_attribute` int(10) unsigned NOT NULL,\\n					`id_shop` int(10) unsigned NOT NULL,\\n					`id_lang` int(10) unsigned NOT NULL,\\n					PRIMARY KEY  (`id_customer`,`customer_email`,`id_product`,`id_product_attribute`,`id_shop`)\\n				) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci', '', 0, 1, '2020-12-13 14:03:48', '2020-12-13 14:03:48'),
+(387, 1, 0, 'Protect vendor folder in module ps_emailalerts', '', 0, 1, '2020-12-13 14:04:08', '2020-12-13 14:04:08'),
+(388, 3, 0, 'Wyjątek wyrzucany przez moduł ps_googleanalytics podczas install. Got error 168 - \\\'Unknown (generic) error from engine\\\' from storage engineCREATE TABLE IF NOT EXISTS `ps_ganalytics` (\\n            `id_google_analytics` int(11) NOT NULL AUTO_INCREMENT,\\n            `id_order` int(11) NOT NULL,\\n            `id_customer` int(10) NOT NULL,\\n            `id_shop` int(11) NOT NULL,\\n            `sent` tinyint(1) DEFAULT NULL,\\n            `date_add` datetime DEFAULT NULL,\\n            PRIMARY KEY (`id_google_analytics`),\\n            KEY `id_order` (`id_order`),\\n            KEY `sent` (`sent`)\\n        ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1', '', 0, 1, '2020-12-13 14:05:20', '2020-12-13 14:05:20'),
+(389, 1, 0, 'Protect vendor folder in module ps_googleanalytics', '', 0, 1, '2020-12-13 14:05:33', '2020-12-13 14:05:33');
 
 -- --------------------------------------------------------
 
@@ -11406,7 +11490,8 @@ INSERT INTO `ps_meta` (`id_meta`, `page`, `configurable`) VALUES
 (37, 'module-ps_emailsubscription-subscription', 1),
 (38, 'module-ps_shoppingcart-ajax', 1),
 (39, 'module-ps_wirepayment-payment', 1),
-(40, 'module-ps_wirepayment-validation', 1);
+(40, 'module-ps_wirepayment-validation', 1),
+(41, 'module-ps_emailalerts-account', 1);
 
 -- --------------------------------------------------------
 
@@ -11492,7 +11577,9 @@ INSERT INTO `ps_meta_lang` (`id_meta`, `id_shop`, `id_lang`, `title`, `descripti
 (39, 1, 1, '', '', '', ''),
 (39, 1, 2, '', '', '', ''),
 (40, 1, 1, '', '', '', ''),
-(40, 1, 2, '', '', '', '');
+(40, 1, 2, '', '', '', ''),
+(41, 1, 1, '', '', '', ''),
+(41, 1, 2, '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -11574,7 +11661,9 @@ INSERT INTO `ps_module` (`id_module`, `name`, `active`, `version`) VALUES
 (64, 'dotpay', 1, '1.2.4.1'),
 (65, 'bluepayment', 1, '2.3.4'),
 (67, 'ps_newproducts', 1, '1.0.1'),
-(69, 'ps_mainmenu', 1, '2.2.0');
+(69, 'ps_mainmenu', 1, '2.2.0'),
+(70, 'ps_emailalerts', 1, '2.2.1'),
+(72, 'ps_googleanalytics', 1, '4.0.0');
 
 -- --------------------------------------------------------
 
@@ -11843,7 +11932,15 @@ INSERT INTO `ps_module_access` (`id_profile`, `id_authorization_role`) VALUES
 (1, 829),
 (1, 830),
 (1, 831),
-(1, 832);
+(1, 832),
+(1, 833),
+(1, 834),
+(1, 835),
+(1, 836),
+(1, 841),
+(1, 842),
+(1, 843),
+(1, 844);
 
 -- --------------------------------------------------------
 
@@ -12119,7 +12216,13 @@ INSERT INTO `ps_module_group` (`id_module`, `id_shop`, `id_group`) VALUES
 (67, 1, 3),
 (69, 1, 1),
 (69, 1, 2),
-(69, 1, 3);
+(69, 1, 3),
+(70, 1, 1),
+(70, 1, 2),
+(70, 1, 3),
+(72, 1, 1),
+(72, 1, 2),
+(72, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -12147,7 +12250,9 @@ INSERT INTO `ps_module_history` (`id`, `id_employee`, `id_module`, `date_add`, `
 (5, 1, 21, '2020-11-07 11:29:18', '2020-11-07 11:29:18'),
 (6, 1, 8, '2020-11-07 15:03:02', '2020-11-07 15:03:02'),
 (7, 1, 24, '2020-12-13 01:00:41', '2020-12-13 01:00:41'),
-(8, 1, 69, '2020-12-13 01:28:11', '2020-12-13 01:28:11');
+(8, 1, 69, '2020-12-13 01:28:11', '2020-12-13 01:28:11'),
+(9, 1, 70, '2020-12-13 14:04:22', '2020-12-13 14:04:22'),
+(10, 1, 71, '2020-12-13 14:05:50', '2020-12-13 14:05:50');
 
 -- --------------------------------------------------------
 
@@ -12239,7 +12344,9 @@ INSERT INTO `ps_module_shop` (`id_module`, `id_shop`, `enable_device`) VALUES
 (64, 1, 7),
 (65, 1, 7),
 (67, 1, 7),
-(69, 1, 7);
+(69, 1, 7),
+(70, 1, 7),
+(72, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -28034,6 +28141,20 @@ ALTER TABLE `ps_feature_value_lang`
   ADD PRIMARY KEY (`id_feature_value`,`id_lang`);
 
 --
+-- Indexes for table `ps_ganalytics`
+--
+ALTER TABLE `ps_ganalytics`
+  ADD PRIMARY KEY (`id_google_analytics`),
+  ADD KEY `id_order` (`id_order`),
+  ADD KEY `sent` (`sent`);
+
+--
+-- Indexes for table `ps_ganalytics_data`
+--
+ALTER TABLE `ps_ganalytics_data`
+  ADD PRIMARY KEY (`id_cart`);
+
+--
 -- Indexes for table `ps_gender`
 --
 ALTER TABLE `ps_gender`
@@ -29307,7 +29428,7 @@ ALTER TABLE `ps_address`
 -- AUTO_INCREMENT for table `ps_admin_filter`
 --
 ALTER TABLE `ps_admin_filter`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `ps_advice`
@@ -29355,7 +29476,7 @@ ALTER TABLE `ps_attribute_impact`
 -- AUTO_INCREMENT for table `ps_authorization_role`
 --
 ALTER TABLE `ps_authorization_role`
-  MODIFY `id_authorization_role` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=833;
+  MODIFY `id_authorization_role` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=845;
 
 --
 -- AUTO_INCREMENT for table `ps_badge`
@@ -29445,7 +29566,7 @@ ALTER TABLE `ps_condition`
 -- AUTO_INCREMENT for table `ps_configuration`
 --
 ALTER TABLE `ps_configuration`
-  MODIFY `id_configuration` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=444;
+  MODIFY `id_configuration` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=457;
 
 --
 -- AUTO_INCREMENT for table `ps_configuration_kpi`
@@ -29457,7 +29578,7 @@ ALTER TABLE `ps_configuration_kpi`
 -- AUTO_INCREMENT for table `ps_connections`
 --
 ALTER TABLE `ps_connections`
-  MODIFY `id_connections` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id_connections` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `ps_connections_source`
@@ -29559,7 +29680,7 @@ ALTER TABLE `ps_employee`
 -- AUTO_INCREMENT for table `ps_employee_session`
 --
 ALTER TABLE `ps_employee_session`
-  MODIFY `id_employee_session` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_employee_session` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `ps_feature`
@@ -29572,6 +29693,12 @@ ALTER TABLE `ps_feature`
 --
 ALTER TABLE `ps_feature_value`
   MODIFY `id_feature_value` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `ps_ganalytics`
+--
+ALTER TABLE `ps_ganalytics`
+  MODIFY `id_google_analytics` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ps_gender`
@@ -29613,7 +29740,7 @@ ALTER TABLE `ps_homeslider_slides`
 -- AUTO_INCREMENT for table `ps_hook`
 --
 ALTER TABLE `ps_hook`
-  MODIFY `id_hook` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=466;
+  MODIFY `id_hook` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=467;
 
 --
 -- AUTO_INCREMENT for table `ps_hook_alias`
@@ -29691,7 +29818,7 @@ ALTER TABLE `ps_link_block_shop`
 -- AUTO_INCREMENT for table `ps_log`
 --
 ALTER TABLE `ps_log`
-  MODIFY `id_log` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=384;
+  MODIFY `id_log` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=390;
 
 --
 -- AUTO_INCREMENT for table `ps_mail`
@@ -29721,19 +29848,19 @@ ALTER TABLE `ps_message`
 -- AUTO_INCREMENT for table `ps_meta`
 --
 ALTER TABLE `ps_meta`
-  MODIFY `id_meta` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_meta` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `ps_module`
 --
 ALTER TABLE `ps_module`
-  MODIFY `id_module` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id_module` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `ps_module_history`
 --
 ALTER TABLE `ps_module_history`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `ps_module_preference`
