@@ -18,6 +18,10 @@ RUN docker-php-ext-configure gd\
     --with-xpm-dir \
     --with-freetype-dir
 
+RUN pecl install redis-5.1.1 \
+    && pecl install xdebug-2.8.1 \
+    && docker-php-ext-enable redis xdebug
+
 RUN docker-php-ext-configure intl
 RUN docker-php-ext-install mysqli pdo_mysql gd intl zip
 RUN docker-php-ext-enable mysqli pdo_mysql gd intl zip
