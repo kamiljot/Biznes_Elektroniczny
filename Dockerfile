@@ -7,7 +7,7 @@ RUN apt-get update -y &&\
       libwebp-dev \
       libxpm-dev \
       libpng-dev \
-      zlib1g-dev libicu-dev g++
+      zlib1g-dev libicu-dev g++ git
 
 RUN docker-php-ext-configure gd\
     --with-gd \
@@ -32,4 +32,9 @@ COPY ssl/server.crt /etc/ssl/certs/ssl-cert-snakeoil.pem
 COPY ssl/server.key /etc/ssl/private/ssl-cert-snakeoil.key
 
 RUN a2ensite default-ssl
+RUN git clone \
+    https://github.com/kamiljot/Biznes_Elektroniczny.git \
+    /var/www/html/Biznes_Elektroniczny
+RUN mkdir /var/www/html/Biznes_Elektroniczny/var/logs
+RUN chown -R www-data:www-data /var/www/html/Biznes_Elektroniczny/
 
