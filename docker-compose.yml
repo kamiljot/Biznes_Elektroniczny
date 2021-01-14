@@ -25,12 +25,29 @@ services:
       MYSQL_USER: biznes_elektroniczny
       MYSQL_PASSWORD: toor
 
-  prestashop:
+  prestashop1:
     build: .
     restart: always
     depends_on:
       - db
     ports:
-      - 80:80
-      - 443:443
+      - "180:80"
+
+  prestashop2:
+    build: .
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "220:80"
+
+  nginx:
+    build: nginx-docker
+    restart: always
+    depends_on:
+      - prestashop1
+      - prestashop2
+    ports:
+      - "80:80"
+      - "443:443"
 

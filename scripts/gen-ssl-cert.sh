@@ -6,7 +6,7 @@ if [ "$1" = "-f" ] || [ "$1" = "--force" ]; then
   FORCE_GENERATE="y"
 fi
 
-SSL_DIR="$(realpath $(dirname $0)/..)/ssl"
+SSL_DIR="$(realpath $(dirname $0)/..)/nginx-docker/ssl/"
 
 KEY_OUT="$SSL_DIR/server.key"
 CERT_OUT="$SSL_DIR/server.crt"

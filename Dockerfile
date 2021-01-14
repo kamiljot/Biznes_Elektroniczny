@@ -26,12 +26,12 @@ RUN docker-php-ext-configure intl
 RUN docker-php-ext-install mysqli pdo_mysql gd intl zip
 RUN docker-php-ext-enable mysqli pdo_mysql gd intl zip
 
-RUN a2enmod rewrite ssl
+RUN a2enmod rewrite
+ # ^append ssl if needed for presta to use ssl directly
+ # keep in mind that when using a load balancer like nginx
+ # in this project, enforcing https by presta will cause
+ # a redirect loop
 
-COPY ssl/server.crt /etc/ssl/certs/ssl-cert-snakeoil.pem
-COPY ssl/server.key /etc/ssl/private/ssl-cert-snakeoil.key
-
-RUN a2ensite default-ssl
 RUN git clone \
     https://github.com/kamiljot/Biznes_Elektroniczny.git \
     /var/www/html/Biznes_Elektroniczny
