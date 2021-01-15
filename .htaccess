@@ -77,4 +77,10 @@ AddType font/woff2 .woff2
 #If rewrite mod isn't enabled
 ErrorDocument 404 /Biznes_Elektroniczny/index.php?controller=404
 
+# token mechanism will break when using load-balancing
+#   one app sets token, redirects, second app gets token,
+#   doesn't recognize it, regenerates, redirects, one app..
+# https://devdocs.prestashop.com/1.7/basics/installation/configuration/#disable-the-back-office-token-protection
+SetEnv _TOKEN_ disabled
+
 # ~~end~~ Do not remove this comment, Prestashop will keep automatically the code outside this comment when .htaccess will be generated again
